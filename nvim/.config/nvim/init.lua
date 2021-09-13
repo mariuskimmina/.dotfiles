@@ -20,7 +20,6 @@ g.mapleader = " "
 g.snippets = "luasnip"
 
 require "mk.globals"
-
 require "mk.disable_builtin"
 
 
