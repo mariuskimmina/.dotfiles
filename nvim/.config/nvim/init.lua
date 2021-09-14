@@ -12,7 +12,6 @@ end
 
 pcall(require, "impatient")
 require "mk.profile"
-
 if require "mk.first_load"() then
   return
 end
