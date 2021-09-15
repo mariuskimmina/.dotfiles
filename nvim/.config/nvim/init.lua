@@ -11,7 +11,6 @@ local function map(mode, lhs, rhs, opts)
 end
 
 pcall(require, "impatient")
-
 require "mk.profile"
 
 if require "mk.first_load"() then
