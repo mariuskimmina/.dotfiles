@@ -19,7 +19,6 @@ if require "mk.first_load"() then
 end
 
 g.mapleader = " "
-
 g.snippets = "luasnip"
 
 require "mk.globals"
