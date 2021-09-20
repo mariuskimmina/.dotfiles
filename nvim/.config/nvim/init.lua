@@ -42,12 +42,10 @@ cmd 'colorscheme dracula'
 
 opt.number = true
 opt.relativenumber = true
-
 opt.termguicolors = true
 
 
 require('remaps')
-
 
 -- Plugin configs
 require('lsp')
