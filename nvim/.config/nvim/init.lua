@@ -48,10 +48,12 @@ opt.termguicolors = true
 
 require('remaps')
 
-require('mk-telescope')
 
+-- Plugin configs
 require('lsp')
-require('mk-treesitter')
+require('mk-lspsaga')
 require('mk-cmp')
+require('mk-telescope')
+require('mk-treesitter')
 require('mk-lualine')
 require('mk-nvimtree')
