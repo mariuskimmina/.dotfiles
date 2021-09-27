@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/marius/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 export PATH=$PATH:/home/marius/go/bin
 export GO_PATH=/home/marius/go
