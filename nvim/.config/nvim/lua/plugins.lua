@@ -26,7 +26,9 @@ return require('packer').startup(function()
 
   -- LSP
   use {'neovim/nvim-lspconfig'}
-  use {'nvim-lua/completion-nvim'}
+  use {'hrsh7th/cmp-nvim-lsp'}
+  use {'hrsh7th/cmp-buffer'}
+  use {'hrsh7th/nvim-cmp'}
 
   -- Search
   use {

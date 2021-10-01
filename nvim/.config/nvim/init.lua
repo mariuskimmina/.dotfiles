@@ -52,5 +52,6 @@ require('mk-telescope')
 
 require('lsp')
 require('mk-treesitter')
+require('mk-cmp')
 require('mk-lualine')
 require('mk-nvimtree')
