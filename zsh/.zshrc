@@ -43,6 +43,7 @@ alias vi="nvim"
 alias v="nvim"
 alias oldvim="vim"
 alias dc="docker-compose"
+alias testdingo="ssh marius@83.171.236.22"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
