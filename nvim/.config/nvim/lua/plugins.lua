@@ -31,6 +31,9 @@ return require('packer').startup(function()
   use {'hrsh7th/nvim-cmp'}
   use {'glepnir/lspsaga.nvim'}
 
+  -- Snippets
+  use {'L3MON4D3/luasnip'}
+
 
   -- Search
   use {
