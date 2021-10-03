@@ -31,6 +31,10 @@ opt.expandtab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 
+-- List chars
+opt.list = true
+opt.listchars = { space = '·', eol = '↲', tab = '» '}
+
 cmd 'colorscheme dracula'
 
 opt.number = true

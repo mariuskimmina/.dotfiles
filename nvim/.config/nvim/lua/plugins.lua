@@ -34,7 +34,6 @@ return require('packer').startup(function()
   -- Snippets
   use {'L3MON4D3/luasnip'}
 
-
   -- Search
   use {
     'nvim-telescope/telescope.nvim',
