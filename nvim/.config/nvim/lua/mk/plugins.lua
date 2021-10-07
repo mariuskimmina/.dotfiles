@@ -31,6 +31,10 @@ return require('packer').startup(function()
   use {'hrsh7th/nvim-cmp'}
   use {'glepnir/lspsaga.nvim'}
 
+  -- brackets
+  use {'windwp/nvim-autopairs'}
+  use {'p00f/nvim-ts-rainbow'}
+
   -- Snippets
   use {'L3MON4D3/luasnip'}
 
