@@ -32,3 +32,6 @@ set updatetime=50
 set shortmess+=c
 
 set colorcolumn=120
+
+set list
+set listchars=space:·,eol:↲
