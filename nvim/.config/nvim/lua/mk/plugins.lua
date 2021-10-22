@@ -21,15 +21,27 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
+  use {
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
   -- Startpage - looking for lua alternative
   use {'mhinz/vim-startify'}
 
   -- LSP
   use {'neovim/nvim-lspconfig'}
+  use {'hrsh7th/nvim-cmp'}
+  use {'hrsh7th/cmp-nvim-lua'}
   use {'hrsh7th/cmp-nvim-lsp'}
   use {'hrsh7th/cmp-buffer'}
-  use {'hrsh7th/nvim-cmp'}
-  use {'glepnir/lspsaga.nvim'}
+  use {'hrsh7th/cmp-path'}
+  use {'onsails/lspkind-nvim'}
+  -- use {'glepnir/lspsaga.nvim'}
+
+  -- using colors
+  use {'tjdevries/colorbuddy'}
+
 
   -- brackets
   use {'windwp/nvim-autopairs'}

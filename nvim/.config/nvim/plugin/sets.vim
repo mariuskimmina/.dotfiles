@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 set guicursor=
 set relativenumber
 set nohlsearch
@@ -34,4 +36,4 @@ set shortmess+=c
 set colorcolumn=120
 
 set list
-set listchars=space:·,eol:↲
+set listchars=tab:>>,space:·,eol:↲

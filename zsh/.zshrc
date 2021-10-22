@@ -49,3 +49,5 @@ alias testdingo="ssh marius@83.171.236.22"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias luamake=/home/marius/tools/lua-language-server/3rd/luamake/luamake
