@@ -15,6 +15,7 @@ return require('packer').startup(function()
     run = ':TSUpdate'
   }
 
+
   -- Statusline
   use {
     'hoob3rt/lualine.nvim',
@@ -31,17 +32,17 @@ return require('packer').startup(function()
 
   -- LSP
   use {'neovim/nvim-lspconfig'}
+  use {'williamboman/nvim-lsp-installer'}
   use {'hrsh7th/nvim-cmp'}
   use {'hrsh7th/cmp-nvim-lua'}
   use {'hrsh7th/cmp-nvim-lsp'}
   use {'hrsh7th/cmp-buffer'}
   use {'hrsh7th/cmp-path'}
   use {'onsails/lspkind-nvim'}
-  -- use {'glepnir/lspsaga.nvim'}
+  use {'glepnir/lspsaga.nvim'}
 
-  -- using colors
-  use {'tjdevries/colorbuddy'}
-
+  -- linting
+  use {'dense-analysis/ale'}
 
   -- brackets
   use {'windwp/nvim-autopairs'}
@@ -55,6 +56,9 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use {'alvan/vim-closetag'}
+
+  -- HTML stuff
 
   -- File Tree
   use {
