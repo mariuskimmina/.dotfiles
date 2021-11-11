@@ -4,7 +4,7 @@ local lualine = require 'lualine'
 
 local config = {
     options = {
-        theme = 'dracula',
+        theme = 'tokyonight',
     },
     sections = {
         lualine_y = {},
@@ -33,7 +33,7 @@ insert {
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
+  -- color = { fg = '#ffffff', gui = 'bold' },
 }
 
 

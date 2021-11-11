@@ -4,7 +4,8 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Color theme
-  use {'dracula/vim', as = 'dracula'}
+  -- use {'dracula/vim', as = 'dracula'}
+  use {'folke/tokyonight.nvim'}
 
   -- move between nvim and tmux panes
   use {'christoomey/vim-tmux-navigator'}
@@ -28,7 +29,8 @@ return require('packer').startup(function()
   }
 
   -- Startpage - looking for lua alternative
-  use {'mhinz/vim-startify'}
+  -- use {'mhinz/vim-startify'}
+  use {'glepnir/dashboard-nvim'}
 
   -- LSP
   use {'neovim/nvim-lspconfig'}

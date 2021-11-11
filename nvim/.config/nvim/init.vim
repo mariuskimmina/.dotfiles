@@ -19,3 +19,4 @@ if &term =~ '^xterm'
   autocmd VimLeave * silent !echo -ne "\e[5 q"
 endif
 
+let g:dashboard_default_executive = 'telescope'
