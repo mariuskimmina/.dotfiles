@@ -8,4 +8,4 @@ require('mk.telescope')
 require('mk.nvimtree')
 require('mk.autopairs')
 require('mk.lsp_saga')
-
+require('mk.dashboard')
