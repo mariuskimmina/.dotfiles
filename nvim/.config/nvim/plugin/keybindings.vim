@@ -1,4 +1,10 @@
+" --------------------------------------------------------------------------------------------------------------------
+" Keys"
+" --------------------------------------------------------------------------------------------------------------------
 lua require("mk")
+
+vnoremap > >gv
+vnoremap < <gv
 
 " LSP
 nnoremap gd :lua vim.lsp.buf.definition()<CR>
@@ -14,7 +20,7 @@ nnoremap <silent>]e :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent><A-d> :Lspsaga open_floaterm<CR>
 tnoremap <silent><A-d> <C-\><C-n>:Lspsaga close_floaterm<CR><
 
-" Telescope
+" Telescope 
 nnoremap <leader>tf <cmd>lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>tg <cmd>lua require('telescope.builtin').git_files()<CR>
 nnoremap <leader>ts <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
@@ -24,6 +30,5 @@ nnoremap <leader>tl <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>n <cmd>NvimTreeToggle<CR>
 
 " Barbar
-" Move to previous/next
 nnoremap <silent>    <leader>h :BufferPrevious<CR>
 nnoremap <silent>    <leader>l :BufferNext<CR>

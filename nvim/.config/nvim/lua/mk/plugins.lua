@@ -53,6 +53,8 @@ return require('packer').startup(function()
   -- Snippets
   use {'L3MON4D3/luasnip'}
 
+  use {'Pocco81/AutoSave.nvim'}
+
   -- Search
   use {
     'nvim-telescope/telescope.nvim',
