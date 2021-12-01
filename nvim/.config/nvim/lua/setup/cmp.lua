@@ -25,7 +25,7 @@ cmp.setup({
     },
     formatting = {
         format = lspkind.cmp_format {
-            with_text = true, 
+            with_text = true,
             maxwidth = 60,
             menu = {
                 buffer = "[BUF]",
@@ -40,19 +40,6 @@ cmp.setup({
         ghost_text = true,
     },
 })
-
--- local Group = require("colorbuddy.group").Group
--- local g = require("colorbuddy.group").groups
--- local s = require("colorbuddy.style").styles
-
-
--- local colors = require("colorbuddy.color").colors
-
--- Group.new("CmpItemAbbr", g.Comment)
--- Group.new("CmpItemAbbrDeprecated", colors.red)
--- Group.new("CmpItemAbbrMatchFuzzy", g.CmpItemAbbr.fg:dark(), nil, s.italic)
--- Group.new("CmpItemKindr", colors.green)
--- Group.new("CmpItemMenur", g.NonText)
 
 -- Setup lspconfig.
 require('lspconfig')['gopls'].setup {
