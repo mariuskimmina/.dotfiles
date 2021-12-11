@@ -73,6 +73,8 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
+    use({ "blackCauldron7/surround.nvim", config = get_setup("surround") })
+    use({ "L3MON4D3/LuaSnip", config = get_setup("luasnip") })
     use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use {'glepnir/lspsaga.nvim'}
