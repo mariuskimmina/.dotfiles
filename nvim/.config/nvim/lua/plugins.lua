@@ -76,6 +76,7 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
+    use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use {'glepnir/lspsaga.nvim'}
     use {'williamboman/nvim-lsp-installer'}

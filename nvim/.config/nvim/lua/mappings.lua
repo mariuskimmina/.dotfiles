@@ -15,13 +15,13 @@ vim.g.mapleader = " "
 -- vnoremap < <gv
 
 -- LSP
-map("n", "gd", "<cmd> lua vim.lsp.buf.definition")
-map("n", "gR", "<cmd> lua vim.lsp.buf.references")
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "gR", "<cmd>lua vim.lsp.buf.references<CR>")
 
-map("n", "gt", "<cmd> Lspsaga hover_doc")
-map("n", "gh", "<cmd> Lspsaga lsp_finder")
-map("n", "gs", "<cmd> Lspsaga signature_help")
-map("n", "gr", "<cmd> Lspsaga rename")
+map("n", "gt", "<cmd> Lspsaga hover_doc<CR>")
+map("n", "gh", "<cmd> Lspsaga lsp_finder<CR>")
+map("n", "gs", "<cmd> Lspsaga signature_help<CR>")
+map("n", "gr", "<cmd> Lspsaga rename<CR>")
 -- nnoremap gd :lua vim.lsp.buf.definition()<CR>
 -- nnoremap gR :lua vim.lsp.buf.references()<CR>
 -- nnoremap <silent>gt :Lspsaga hover_doc<CR>
@@ -36,9 +36,11 @@ map("n", "gr", "<cmd> Lspsaga rename")
 -- nnoremap <silent><A-d> :Lspsaga open_floaterm<CR>
 -- tnoremap <silent><A-d> <C-\><C-n>:Lspsaga close_floaterm<CR><
 
--- Telescope 
+-- Telescope
 map("n", "<leader>tf", '<cmd>lua require("telescope.builtin").find_files()<cr>')
 map("n", "<leader>tl", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+-- neoclip
+map("n", "<leader>p", [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]], { noremap = true, silent = true })
 
 -- NvimTree
 map("n", "<leader>n", ":NvimTreeToggle<CR>", { silent = true })
