@@ -31,7 +31,8 @@ return require("packer").startup({
     use {'christoomey/vim-tmux-navigator'}
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
     use({ "kyazdani42/nvim-web-devicons" })
-    use {'folke/tokyonight.nvim'}
+    -- use {'folke/tokyonight.nvim'}
+    use {'shaunsingh/nord.nvim'}
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
