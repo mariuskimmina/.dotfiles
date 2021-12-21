@@ -1,9 +1,9 @@
--- vim.cmd([[
-  -- augroup packer_user_config
-    -- autocmd!
-    -- autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  -- augroup end
--- ]])
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -56,6 +56,7 @@ return require("packer").startup({
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
+        { 'saadparwaiz1/cmp_luasnip' },
         { "f3fora/cmp-spell", { "hrsh7th/cmp-calc" }, { "hrsh7th/cmp-emoji" } },
       },
       config = get_setup("cmp"),
@@ -76,6 +77,7 @@ return require("packer").startup({
     })
     use({ "blackCauldron7/surround.nvim", config = get_setup("surround") })
     use({ "L3MON4D3/LuaSnip", config = get_setup("luasnip") })
+    use{"rafamadriz/friendly-snippets"}
     use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use {'glepnir/lspsaga.nvim'}
