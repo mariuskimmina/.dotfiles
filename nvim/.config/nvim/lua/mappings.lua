@@ -46,16 +46,16 @@ keymap("i", "jjk", "<ESC>", opts)
 -- tnoremap <silent><A-d> <C-\><C-n>:Lspsaga close_floaterm<CR><
 
 -- Telescope
-keymap("n", "<leader>tf", '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
-keymap("n", "<leader>tl", '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+keymap("n", "<leader>tf", '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>', opts)
+keymap("n", "<leader>tg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 
 -- neoclip
 -- Having more stuff on my clipboard
 keymap("n", "<leader>p", [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]], opts)
 
 -- Barbar
-keymap("n", "<leader>h", ":BufferPrevious<CR>", opts)
-keymap("n", "<leader>l", ":BufferNext<CR>", opts)
+-- keymap("n", "<leader>h", ":BufferPrevious<CR>", opts)
+-- keymap("n", "<leader>l", ":BufferNext<CR>", opts)
 
 -- NvimTree
 keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)

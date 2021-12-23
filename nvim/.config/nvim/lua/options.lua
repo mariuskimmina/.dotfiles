@@ -45,4 +45,4 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]]
 
 -- Load the colorscheme
-vim.cmd[[colorscheme nord]]
+vim.cmd[[colorscheme kanagawa]]
