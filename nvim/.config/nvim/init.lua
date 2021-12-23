@@ -2,6 +2,7 @@
 
 -- Plugin management via Packer
 require("plugins")
+require("setup.lsp")
 
 -- All non plugin related (vim) options
 require("options")
@@ -11,3 +12,4 @@ require("mappings")
 
 -- Vim autocommands/autogroups
 require("autocmd")
+

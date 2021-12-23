@@ -24,13 +24,13 @@ keymap("i", "jjk", "<ESC>", opts)
 
 
 -- LSP
-keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("n", "gR", "<cmd>lua vim.lsp.buf.references<CR>", opts)
+-- keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- keymap("n", "gR", "<cmd>lua vim.lsp.buf.references<CR>", opts)
 
-keymap("n", "gt", "<cmd> Lspsaga hover_doc<CR>", opts)
-keymap("n", "gh", "<cmd> Lspsaga lsp_finder<CR>", opts)
-keymap("n", "gs", "<cmd> Lspsaga signature_help<CR>", opts)
-keymap("n", "gr", "<cmd> Lspsaga rename<CR>", opts)
+-- keymap("n", "gt", "<cmd> Lspsaga hover_doc<CR>", opts)
+-- keymap("n", "gh", "<cmd> Lspsaga lsp_finder<CR>", opts)
+-- keymap("n", "gs", "<cmd> Lspsaga signature_help<CR>", opts)
+-- keymap("n", "gr", "<cmd> Lspsaga rename<CR>", opts)
 -- nnoremap gd :lua vim.lsp.buf.definition()<CR>
 -- nnoremap gR :lua vim.lsp.buf.references()<CR>
 -- nnoremap <silent>gt :Lspsaga hover_doc<CR>

@@ -63,7 +63,7 @@ return require("packer").startup({
     })
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("nvimtree") })
     use("p00f/nvim-ts-rainbow")
-    use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
+    use({ "neovim/nvim-lspconfig"})
     use({
       "nvim-telescope/telescope.nvim",
       module = "telescope",
