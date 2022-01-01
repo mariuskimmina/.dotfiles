@@ -23,6 +23,12 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# kubectl autocompletion
+source <(kubectl completion zsh)
+
+# helm autocompletion
+source <(helm completion zsh)
+
 # User configuration
 
 # Exports
