@@ -29,11 +29,8 @@ return require("packer").startup({
     use("wbthomason/packer.nvim")
 
     use {'christoomey/vim-tmux-navigator'}
-    use({ "nathom/filetype.nvim", config = get_setup("filetype") })
     use({ "kyazdani42/nvim-web-devicons" })
     use {"rebelot/kanagawa.nvim"}
-    -- use {'folke/tokyonight.nvim'}
-    -- use {'shaunsingh/nord.nvim'}
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
@@ -63,6 +60,7 @@ return require("packer").startup({
       config = get_setup("cmp"),
     })
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("nvimtree") })
+    use({ "nvim-lua/lsp-status.nvim" })
     use("p00f/nvim-ts-rainbow")
     use({ "neovim/nvim-lspconfig"})
     use({
@@ -76,10 +74,10 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
-    use({ "blackCauldron7/surround.nvim", config = get_setup("surround") })
     use {
-      'romgrk/barbar.nvim',
-      requires = {'kyazdani42/nvim-web-devicons'}
+      'akinsho/bufferline.nvim',
+      requires = {'kyazdani42/nvim-web-devicons'},
+      config = get_setup("bufferline")
     }
     use({ "L3MON4D3/LuaSnip", config = get_setup("luasnip") })
     use{"rafamadriz/friendly-snippets"}

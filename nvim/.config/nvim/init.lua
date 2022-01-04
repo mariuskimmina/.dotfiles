@@ -12,4 +12,3 @@ require("mappings")
 
 -- Vim autocommands/autogroups
 require("autocmd")
-
