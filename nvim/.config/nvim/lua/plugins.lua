@@ -23,7 +23,6 @@ function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
-
 return require("packer").startup({
   function(use)
     use("wbthomason/packer.nvim")
@@ -84,6 +83,7 @@ return require("packer").startup({
     use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use {'glepnir/lspsaga.nvim'}
+    use {'lewis6991/gitsigns.nvim', config = get_setup("gitsigns")}
     use {'williamboman/nvim-lsp-installer'}
     use({ "goolord/alpha-nvim", config = get_setup("alpha") })
     if packer_bootstrap then

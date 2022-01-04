@@ -9,6 +9,9 @@ if not snip_status_ok then
   return
 end
 
+function test(istest)
+    test
+end
 
 
 local lspkind = require 'lspkind'
