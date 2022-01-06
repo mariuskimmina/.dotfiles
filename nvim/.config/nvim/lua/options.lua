@@ -33,7 +33,7 @@ opt.cmdheight= 2
 opt.updatetime= 50
 opt.colorcolumn = "120"
 opt.list = true
-opt.listchars = "tab:>>,space:·,eol:↲"
+opt.listchars = "tab:  ,space: ,eol:↲"
 opt.completeopt = "menu,menuone,noselect"
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
@@ -45,4 +45,5 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]]
 
 -- Load the colorscheme
-vim.cmd[[colorscheme kanagawa]]
+-- vim.g.vscode_style = "dark"
+vim.cmd[[colorscheme nord]]

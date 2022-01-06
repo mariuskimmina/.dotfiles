@@ -14,6 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/home/marius/go/bin
 export GO_PATH=/home/marius/go
 export PATH=$PATH:/$GO_PATH/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export EDITOR="nvim"
 
@@ -52,6 +53,7 @@ alias lg="lazygit"
 alias dc="docker-compose"
 alias testdingo="ssh marius@83.171.236.22"
 alias copyamass="scp amass marius@83.171.236.22:/home/marius/bin"
+alias tmux="TERM=xterm-256color tmux"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

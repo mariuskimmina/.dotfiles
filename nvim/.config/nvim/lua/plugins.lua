@@ -29,7 +29,8 @@ return require("packer").startup({
 
     use {'christoomey/vim-tmux-navigator'}
     use({ "kyazdani42/nvim-web-devicons" })
-    use {"rebelot/kanagawa.nvim"}
+    use {"Mofiqul/vscode.nvim"}
+    use { "shaunsingh/nord.nvim" }
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
@@ -59,6 +60,7 @@ return require("packer").startup({
       config = get_setup("cmp"),
     })
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("nvimtree") })
+    use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent") }
     use({ "nvim-lua/lsp-status.nvim" })
     use("p00f/nvim-ts-rainbow")
     use({ "neovim/nvim-lspconfig"})
