@@ -61,9 +61,11 @@ return require("packer").startup({
     })
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("nvimtree") })
     use {"lukas-reineke/indent-blankline.nvim", config = get_setup("indent") }
+    use {"folke/which-key.nvim", config = get_setup("whichkey")}
     use({ "nvim-lua/lsp-status.nvim" })
     use("p00f/nvim-ts-rainbow")
     use({ "neovim/nvim-lspconfig"})
+    --float use({ "akinsho/toggleterm.nvim", config = get_setup("toggleterm")})
     use({
       "nvim-telescope/telescope.nvim",
       module = "telescope",
@@ -84,7 +86,7 @@ return require("packer").startup({
     use{"rafamadriz/friendly-snippets"}
     use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
-    use {'glepnir/lspsaga.nvim'}
+    -- use {'glepnir/lspsaga.nvim'}
     use {'lewis6991/gitsigns.nvim', config = get_setup("gitsigns")}
     use {'williamboman/nvim-lsp-installer'}
     use({ "goolord/alpha-nvim", config = get_setup("alpha") })

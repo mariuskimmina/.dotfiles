@@ -22,14 +22,14 @@ M.setup = function()
     update_in_insert = true,
     underline = true,
     severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
+    --float = {
+      --focusable = false,
+      --style = "minimal",
+      --border = "rounded",
+      --source = "always",
+      --header = "",
+      --prefix = "",
+    --},
   }
 
   vim.diagnostic.config(config)
@@ -86,7 +86,7 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
   end
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  -- lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
