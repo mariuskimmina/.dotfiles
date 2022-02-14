@@ -31,6 +31,8 @@ return require("packer").startup({
     use({ "kyazdani42/nvim-web-devicons" })
     use {"Mofiqul/vscode.nvim"}
     use { "shaunsingh/nord.nvim" }
+    use { "EdenEast/nightfox.nvim" }
+    use {"ellisonleao/glow.nvim"}
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
