@@ -30,9 +30,14 @@ return require("packer").startup({
     use {'christoomey/vim-tmux-navigator'}
     use({ "kyazdani42/nvim-web-devicons" })
     use {"Mofiqul/vscode.nvim"}
-    use { "shaunsingh/nord.nvim" }
-    use { "EdenEast/nightfox.nvim" }
+    -- use { "shaunsingh/nord.nvim" }
+    -- use { "EdenEast/nightfox.nvim" }
+    -- use {'folke/tokyonight.nvim'}
     use {"ellisonleao/glow.nvim"}
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin"
+    })
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
@@ -68,6 +73,8 @@ return require("packer").startup({
     use("p00f/nvim-ts-rainbow")
     use({ "neovim/nvim-lspconfig"})
     --float use({ "akinsho/toggleterm.nvim", config = get_setup("toggleterm")})
+
+    -- Telescope
     use({
       "nvim-telescope/telescope.nvim",
       module = "telescope",
@@ -79,6 +86,7 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
+
     use {
       'akinsho/bufferline.nvim',
       requires = {'kyazdani42/nvim-web-devicons'},

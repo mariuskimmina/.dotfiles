@@ -15,8 +15,8 @@ end
 
 local function footer()
   local total_plugins = #vim.tbl_keys(packer_plugins)
-  local datetime = os.date("%d-%m-%Y  %H:%M:%S")
-  return total_plugins .. " plugins  " .. datetime
+  local vim_version = vim.version()
+  return total_plugins .. " plugins installed | Neovim Version: " .. vim_version['major'] .. '.' .. vim_version['minor'] .. '.' .. vim_version['patch']
 end
 
 dashboard.section.header.val = {
@@ -30,9 +30,10 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
-  button("SPC f h", "  Recently opened files"),
-  button("SPC f f", "  Find file"),
-  button("SPC f a", "  Find word"),
+  button("SPC t o s", "  open-source projects"),
+  button("SPC f f", "  personal projects"),
+  button("SPC t f", "  find file"),
+  button("SPC f a", "  open folder"),
   button("SPC s l", "  Open session"),
   button("SPC c n", "  New file"),
   button("SPC c c", "  Update plugins"),

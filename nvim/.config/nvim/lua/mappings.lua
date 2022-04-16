@@ -48,6 +48,7 @@ keymap("i", "jjk", "<ESC>", opts)
 -- Telescope
 keymap("n", "<leader>tf", '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>', opts)
 keymap("n", "<leader>tg", '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+keymap("n", "<leader>tos", '<cmd>lua require("setup.telescope").search_opensource()<CR>',opts)
 
 -- neoclip
 -- Having more stuff on my clipboard
