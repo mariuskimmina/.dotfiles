@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+NOTES_PATH="$HOME/knowledgebase"
+
+cd $NOTES_PATH
+
+git pull
+
+CHANGES_EXIST=”$(git status — porcelain | wc -l)”
+
+if [ "$CHANGES_EXIST" -eq 0 ]; then
+    exit 0
+fi
+
+git add -A
+git commit -q -m “obsidian-sync”
+git push -q

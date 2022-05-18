@@ -28,7 +28,7 @@ keymap("n", "<leader>tg", '<cmd>lua require("telescope.builtin").live_grep()<cr>
 keymap("n", "<leader>tos", '<cmd>lua require("setup.telescope").search_opensource()<CR>',opts)
 vim.keymap.set("n", "<leader>gf", "<cmd>Telescope diagnostics<cr>", {buffer=0})
 
-vim.keymap.set("i", "<esc>", "<esc>:update<cr>", { silent = true })
+-- vim.keymap.set("i", "<esc>", "<esc>:update<cr>", { silent = true })
 
 -- neoclip
 -- Having more stuff on my clipboard
