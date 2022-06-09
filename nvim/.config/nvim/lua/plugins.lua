@@ -26,19 +26,18 @@ end
 return require("packer").startup({
     function(use)
         use("wbthomason/packer.nvim")
-
         use {'christoomey/vim-tmux-navigator'}
         use({ "kyazdani42/nvim-web-devicons" })
         use({
-            "catppuccin/nvim",
-            as = "catppuccin"
+            "EdenEast/nightfox.nvim",
+            as = "nightfox",
         })
+
         use({
-            "nvim-lualine/lualine.nvim",
-            config = get_setup("lualine"),
-            event = "VimEnter",
-            requires = { "kyazdani42/nvim-web-devicons", opt = true },
+            "feline-nvim/feline.nvim",
+            get_setup("feline"),
         })
+
         use({
             "nvim-treesitter/nvim-treesitter",
             config = get_setup("treesitter"),
@@ -91,6 +90,10 @@ return require("packer").startup({
         use {'lewis6991/gitsigns.nvim', config = get_setup("gitsigns")}
         use {'williamboman/nvim-lsp-installer'}
         use({ "goolord/alpha-nvim", config = get_setup("alpha") })
+
+        use({"akinsho/toggleterm.nvim", config = get_setup("toggleterm") })
+
+
         if packer_bootstrap then
             require("packer").sync()
         end

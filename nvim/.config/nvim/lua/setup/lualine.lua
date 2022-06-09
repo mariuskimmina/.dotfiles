@@ -1,10 +1,5 @@
 local lualine = require 'lualine'
 
--- lualine.setup {
-  -- options = {
-    -- theme = 'catppuccin'
-  -- }
--- }
 
 local mode = {
 	"mode",
@@ -29,7 +24,7 @@ local conditions = {
 
 local config = {
     options = {
-        theme = 'catppuccin',
+        theme = 'nightfox',
         icons_enabled = true,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },

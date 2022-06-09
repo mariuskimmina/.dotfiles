@@ -46,4 +46,4 @@ vim.cmd [[set formatoptions-=cro]]
 
 -- Load the colorscheme
 -- vim.g.vscode_style = "dark"
-vim.cmd[[colorscheme catppuccin]]
+vim.cmd("colorscheme nightfox")
