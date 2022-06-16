@@ -1,194 +1,324 @@
--- Feline statusline definition.
---
--- Note: This statusline does not define any colors. Instead the statusline is
--- built on custom highlight groups that I define. The colors for these
--- highlight groups are pulled from the current colorscheme applied. Check the
--- file: `lua/eden/modules/ui/colors.lua` to see how they are defined.
-
-local u = require("eden.modules.ui.feline.util")
-local fmt = string.format
-
--- "┃", "█", "", "", "", "", "", "", "●"
-
-local get_diag = function(str)
-  local count = vim.lsp.diagnostic.get_count(0, str)
-  return (count > 0) and " " .. count .. " " or ""
+if not pcall(require, "feline") then
+  return
 end
 
-local function vi_mode_hl()
-  return u.vi.colors[vim.fn.mode()] or "FlnViBlack"
+local colors = {
+    bg = '#282c34',
+    fg = '#abb2bf',
+    yellow = '#e0af68',
+    cyan = '#56b6c2',
+    darkblue = '#081633',
+    green = '#98c379',
+    orange = '#d19a66',
+    violet = '#a9a1e1',
+    magenta = '#c678dd',
+    blue = '#61afef',
+    red = '#e86671'
+}
+
+local vi_mode_colors = {
+    NORMAL = colors.green,
+    INSERT = colors.red,
+    VISUAL = colors.magenta,
+    OP = colors.green,
+    BLOCK = colors.blue,
+    REPLACE = colors.violet,
+    ['V-REPLACE'] = colors.violet,
+    ENTER = colors.cyan,
+    MORE = colors.cyan,
+    SELECT = colors.orange,
+    COMMAND = colors.green,
+    SHELL = colors.green,
+    TERM = colors.green,
+    NONE = colors.yellow
+}
+
+local function file_osinfo()
+    local os = vim.bo.fileformat:upper()
+    local icon
+    if os == 'UNIX' then
+        icon = ' '
+    elseif os == 'MAC' then
+        icon = ' '
+    else
+        icon = ' '
+    end
+    return icon .. os
 end
 
-local function vi_sep_hl()
-  return u.vi.sep[vim.fn.mode()] or "FlnBlack"
+local lsp = require 'feline.providers.lsp'
+local vi_mode_utils = require 'feline.providers.vi_mode'
+
+local lsp_get_diag = function(str)
+    local sev = vim.diagnostic.severity.ERROR
+    if str == "Warn" then
+        sev = vim.diagnostic.severity.WARN
+    end
+    if str == "Info" then
+        sev = vim.diagnostic.severity.INFO
+    end
+    if str == "Hint" then
+        sev = vim.diagnostic.severity.HINT
+    end
+    local count = #vim.diagnostic.gett(0, { severity = sev })
+    return (count > 0) and ' '..count..' ' or ''
 end
 
-local c = {
-  vimode = {
-    provider = function()
-      return string.format(" %s ", u.vi.text[vim.fn.mode()])
-    end,
-    hl = vi_mode_hl,
-    right_sep = { str = " ", hl = vi_sep_hl },
-  },
-  gitbranch = {
-    provider = "git_branch",
-    icon = " ",
-    hl = "FlnGitBranch",
-    right_sep = { str = "  ", hl = "FlnGitBranch" },
-    enabled = function()
-      return vim.b.gitsigns_status_dict ~= nil
-    end,
-  },
-  file_type = {
-    provider = function()
-      return fmt(" %s ", vim.bo.filetype:upper())
-    end,
-    hl = "FlnAlt",
-  },
-  fileinfo = {
-    provider = { name = "file_info", opts = { type = "relative" } },
-    hl = "FlnAlt",
-    left_sep = { str = " ", hl = "FlnAltSep" },
-    right_sep = { str = "", hl = "FlnAltSep" },
-  },
-  file_enc = {
-    provider = function()
-      local os = u.icons[vim.bo.fileformat] or ""
-      return fmt(" %s %s ", os, vim.bo.fileencoding)
-    end,
-    hl = "StatusLine",
-    left_sep = { str = u.icons.left_filled, hl = "FlnAltSep" },
-  },
-  cur_position = {
-    provider = function()
-      -- TODO: What about 4+ diget line numbers?
-      return fmt(" %3d:%-2d ", unpack(vim.api.nvim_win_get_cursor(0)))
-    end,
-    hl = vi_mode_hl,
-    left_sep = { str = u.icons.left_filled, hl = vi_sep_hl },
-  },
-  cur_percent = {
-    provider = function()
-      return " " .. require("feline.providers.cursor").line_percentage() .. "  "
-    end,
-    hl = vi_mode_hl,
-    left_sep = { str = u.icons.left, hl = vi_mode_hl },
-  },
-  default = { -- needed to pass the parent StatusLine hl group to right hand side
-    provider = "",
-    hl = "StatusLine",
-  },
-  lsp_status = {
-    provider = function()
-      return require("lsp-status").status()
-    end,
-    hl = "FlnStatus",
-    left_sep = { str = "", hl = "FlnStatusBg", always_visible = true },
-    right_sep = { str = "", hl = "FlnErrorStatus", always_visible = true },
-  },
-  lsp_error = {
-    provider = function()
-      return get_diag("Error")
-    end,
-    hl = "FlnError",
-    right_sep = { str = "", hl = "FlnWarnError", always_visible = true },
-  },
-  lsp_warn = {
-    provider = function()
-      return get_diag("Warning")
-    end,
-    hl = "FlnWarn",
-    right_sep = { str = "", hl = "FlnInfoWarn", always_visible = true },
-  },
-  lsp_info = {
-    provider = function()
-      return get_diag("Information")
-    end,
-    hl = "FlnInfo",
-    right_sep = { str = "", hl = "FlnHintInfo", always_visible = true },
-  },
-  lsp_hint = {
-    provider = function()
-      return get_diag("Hint")
-    end,
-    hl = "FlnHint",
-    right_sep = { str = "", hl = "FlnBgHint", always_visible = true },
-  },
+-- LuaFormatter off
 
-  in_fileinfo = {
-    provider = "file_info",
-    hl = "StatusLine",
-  },
-  in_position = {
-    provider = "position",
-    hl = "StatusLine",
-  },
-}
-
-local active = {
-  { -- left
-    c.vimode,
-    c.gitbranch,
-    c.fileinfo,
-    c.default, -- must be last
-  },
-  { -- right
-    c.lsp_status,
-    c.lsp_error,
-    c.lsp_warn,
-    c.lsp_info,
-    c.lsp_hint,
-    c.file_type,
-    c.file_enc,
-    c.cur_position,
-    c.cur_percent,
-  },
-}
-
-local inactive = {
-  { c.in_fileinfo }, -- left
-  { c.in_position }, -- right
-}
-
--- -- Define autocmd that generates the highlight groups from the new colorscheme
--- -- Then reset the highlights for feline
--- edn.aug.FelineColorschemeReload = {
---   {
---     { "SessionLoadPost", "ColorScheme" },
---     function()
---       require("eden.modules.ui.feline.colors").gen_highlights()
---       -- This does not look like it is required. If this is called I see the ^^^^^^ that
---       -- seperates the two sides of the bar. Since the entire config uses highlight groups
---       -- all that is required is to redefine them.
---       -- require("feline").reset_highlights()
---     end,
---   },
--- }
-
-require("feline").setup({
-  components = { active = active, inactive = inactive },
-  highlight_reset_triggers = {},
-  force_inactive = {
-    filetypes = {
-      "NvimTree",
-      "packer",
-      "dap-repl",
-      "dapui_scopes",
-      "dapui_stacks",
-      "dapui_watches",
-      "dapui_repl",
-      "LspTrouble",
-      "qf",
-      "help",
+local comps = {
+    vi_mode = {
+        left = {
+            provider = function()
+              return '  ' .. vi_mode_utils.get_vim_mode()
+            end,
+            hl = function()
+                local val = {
+                    name = vi_mode_utils.get_mode_highlight_name(),
+                    fg = vi_mode_utils.get_mode_color(),
+                    -- fg = colors.bg
+                }
+                return val
+            end,
+            right_sep = ' '
+        },
+        right = {
+            -- provider = '▊',
+            provider = '' ,
+            hl = function()
+                local val = {
+                    name = vi_mode_utils.get_mode_highlight_name(),
+                    fg = vi_mode_utils.get_mode_color()
+                }
+                return val
+            end,
+            left_sep = ' ',
+            right_sep = ' '
+        }
     },
-    buftypes = { "terminal" },
-    bufnames = {},
-  },
-  disable = {
-    filetypes = {
-      "dashboard",
-      "startify",
+    file = {
+        info = {
+            provider = {
+              name = 'file_info',
+              opts = {
+                type = 'relative-short',
+                file_readonly_icon = '  ',
+                -- file_readonly_icon = '  ',
+                -- file_readonly_icon = '  ',
+                -- file_readonly_icon = '  ',
+                -- file_modified_icon = '',
+                file_modified_icon = '',
+                -- file_modified_icon = 'ﱐ',
+                -- file_modified_icon = '',
+                -- file_modified_icon = '',
+                -- file_modified_icon = '',
+              }
+            },
+            hl = {
+                fg = colors.blue,
+                style = 'bold'
+            }
+        },
+        encoding = {
+            provider = 'file_encoding',
+            left_sep = ' ',
+            hl = {
+                fg = colors.violet,
+                style = 'bold'
+            }
+        },
+        type = {
+            provider = 'file_type'
+        },
+        os = {
+            provider = file_osinfo,
+            left_sep = ' ',
+            hl = {
+                fg = colors.violet,
+                style = 'bold'
+            }
+        },
+        position = {
+            provider = 'position',
+            left_sep = ' ',
+            hl = {
+                fg = colors.cyan,
+                -- style = 'bold'
+            }
+        },
     },
-  },
-})
+    left_end = {
+        provider = function() return '' end,
+        hl = {
+            fg = colors.bg,
+            bg = colors.blue,
+        }
+    },
+    line_percentage = {
+        provider = 'line_percentage',
+        left_sep = ' ',
+        hl = {
+            style = 'bold'
+        }
+    },
+    scroll_bar = {
+        provider = 'scroll_bar',
+        left_sep = ' ',
+        hl = {
+            fg = colors.blue,
+            style = 'bold'
+        }
+    },
+    diagnos = {
+        err = {
+            -- provider = 'diagnostic_errors',
+            provider = function()
+                return '' .. lsp_get_diag("Error")
+            end,
+            -- left_sep = ' ',
+            enabled = function() return lsp.diagnostics_exist('Error') end,
+            hl = {
+                fg = colors.red
+            }
+        },
+        warn = {
+            -- provider = 'diagnostic_warnings',
+            provider = function()
+                return '' ..  lsp_get_diag("Warn")
+            end,
+            -- left_sep = ' ',
+            enabled = function() return lsp.diagnostics_exist('Warn') end,
+            hl = {
+                fg = colors.yellow
+            }
+        },
+        info = {
+            -- provider = 'diagnostic_info',
+            provider = function()
+                return '' .. lsp_get_diag("Info")
+            end,
+            -- left_sep = ' ',
+            enabled = function() return lsp.diagnostics_exist('Info') end,
+            hl = {
+                fg = colors.blue
+            }
+        },
+        hint = {
+            -- provider = 'diagnostic_hints',
+            provider = function()
+                return '' .. lsp_get_diag("Hint")
+            end,
+            -- left_sep = ' ',
+            enabled = function() return lsp.diagnostics_exist('Hint') end,
+            hl = {
+                fg = colors.cyan
+            }
+        },
+    },
+    lsp = {
+        name = {
+            provider = 'lsp_client_names',
+            -- left_sep = ' ',
+            right_sep = ' ',
+            -- icon = '  ',
+            icon = '慎',
+            hl = {
+                fg = colors.yellow
+            }
+        }
+    },
+    git = {
+        branch = {
+            provider = 'git_branch',
+            icon = ' ',
+            -- icon = ' ',
+            left_sep = ' ',
+            hl = {
+                fg = colors.violet,
+                style = 'bold'
+            },
+        },
+        add = {
+            provider = 'git_diff_added',
+            hl = {
+                fg = colors.green
+            }
+        },
+        change = {
+            provider = 'git_diff_changed',
+            hl = {
+                fg = colors.orange
+            }
+        },
+        remove = {
+            provider = 'git_diff_removed',
+            hl = {
+                fg = colors.red
+            }
+        }
+    }
+}
+
+local components = {
+  active = {},
+  inactive = {},
+}
+
+table.insert(components.active, {})
+table.insert(components.active, {})
+table.insert(components.active, {})
+table.insert(components.inactive, {})
+table.insert(components.inactive, {})
+table.insert(components.inactive, {})
+
+table.insert(components.active[1], comps.vi_mode.left)
+table.insert(components.active[1], comps.file.info)
+table.insert(components.active[1], comps.git.branch)
+table.insert(components.active[1], comps.git.add)
+table.insert(components.active[1], comps.git.change)
+table.insert(components.active[1], comps.git.remove)
+table.insert(components.inactive[1], comps.vi_mode.left)
+table.insert(components.inactive[1], comps.file.info)
+table.insert(components.active[3], comps.diagnos.err)
+table.insert(components.active[3], comps.diagnos.warn)
+table.insert(components.active[3], comps.diagnos.hint)
+table.insert(components.active[3], comps.diagnos.info)
+table.insert(components.active[3], comps.lsp.name)
+table.insert(components.active[3], comps.file.os)
+table.insert(components.active[3], comps.file.position)
+table.insert(components.active[3], comps.line_percentage)
+table.insert(components.active[3], comps.scroll_bar)
+table.insert(components.active[3], comps.vi_mode.right)
+
+-- TreeSitter
+-- local ts_utils = require("nvim-treesitter.ts_utils")
+-- local ts_parsers = require("nvim-treesitter.parsers")
+-- local ts_queries = require("nvim-treesitter.query")
+--[[ table.insert(components.active[2], {
+  provider = function()
+    local node = require("nvim-treesitter.ts_utils").get_node_at_cursor()
+    return ("%d:%s [%d, %d] - [%d, %d]")
+      :format(node:symbol(), node:type(), node:range())
+  end,
+  enabled = function()
+    local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
+    return ok and ts_parsers.has_parser()
+  end
+}) ]]
+
+-- require'feline'.setup {}
+require'feline'.setup {
+    colors = { bg = colors.bg, fg = colors.fg },
+    components = components,
+    vi_mode_colors = vi_mode_colors,
+    force_inactive = {
+        filetypes = {
+            'packer',
+            'NvimTree',
+            'fugitive',
+            'fugitiveblame'
+        },
+        buftypes = {'terminal'},
+        bufnames = {}
+    }
+}

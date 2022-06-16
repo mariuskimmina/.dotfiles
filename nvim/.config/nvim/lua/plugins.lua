@@ -35,7 +35,7 @@ return require("packer").startup({
 
         use({
             "feline-nvim/feline.nvim",
-            get_setup("feline"),
+            config = get_setup("feline"),
         })
 
         use({
@@ -43,6 +43,7 @@ return require("packer").startup({
             config = get_setup("treesitter"),
             run = ":TSUpdate",
         })
+
         use("nvim-treesitter/nvim-treesitter-textobjects")
         use({
             "windwp/nvim-autopairs",
