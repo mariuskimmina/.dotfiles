@@ -49,7 +49,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/marius/.config/awesome/themes/powerarrow-dark/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -329,8 +330,12 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey }, "space", function () awful.util.spawn("rofi -show run") end,
+              {description = "launch rofi", group = "launcher"}),
+
+    -- Browser
+    awful.key({ modkey }, "b", function () awful.util.spawn("brave-browser") end,
+              {description = "launch brave", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -354,7 +359,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey }, "q", function (c) c:kill() end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
