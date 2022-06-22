@@ -60,7 +60,7 @@ local lsp_get_diag = function(str)
     if str == "Hint" then
         sev = vim.diagnostic.severity.HINT
     end
-    local count = #vim.diagnostic.gett(0, { severity = sev })
+    local count = #vim.diagnostic.get(0, { severity = sev })
     return (count > 0) and ' '..count..' ' or ''
 end
 
