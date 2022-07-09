@@ -7,7 +7,7 @@ opt.showmode = false
 opt.backup = false
 opt.encoding = "utf-8"
 opt.cursorline = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.hlsearch = true
 opt.hidden = true
 opt.errorbells = false
@@ -46,4 +46,4 @@ vim.cmd [[set formatoptions-=cro]]
 
 -- Load the colorscheme
 -- vim.g.vscode_style = "dark"
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme duskfox")
