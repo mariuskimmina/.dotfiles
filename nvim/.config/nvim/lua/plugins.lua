@@ -32,6 +32,7 @@ return require("packer").startup({
             "EdenEast/nightfox.nvim",
             as = "nightfox",
         })
+        use('shaunsingh/nord.nvim')
 
         use({
             "feline-nvim/feline.nvim",
