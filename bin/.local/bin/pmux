@@ -38,9 +38,11 @@ if [[ "$SELECTED" == "Dotfiles" ]]; then
     tmux send-keys -t 'Shell' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
 fi
 
-if [[ "$SELECTED" == "Mypervisor" ]]; then
+if [[ "$SELECTED" == "OS" ]]; then
     tmux rename-window -t $SELECTED:1 'Main'
+    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/os' C-m 'clear'
     tmux new-window -t $SELECTED:2 -n 'Shell'
+    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/os' C-m 'clear'
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
