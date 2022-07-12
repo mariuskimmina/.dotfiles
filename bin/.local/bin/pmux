@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# unset TMUX
+PROJECTS=$(echo "CoreDNS Blog" | tr " " "\n")
+SELECTED=$(echo -e "$PROJECTS" | fzf)
+SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
+
+# Only create tmux session if it doesn't already exist
+if [ "$SESSIONEXISTS" = "" ]
+then
+    tmux new-session -d -s $SELECTED
+
+    if [[ "$SELECTED" == "CoreDNS" ]]; then
+        tmux rename-window -t $SELECTED:1 'Main'
+        tmux new-window -t $SELECTED:2 -n 'Test'
+        tmux new-window -t $SELECTED:3 -n "CoreDNS"
+        tmux new-window -t $SELECTED:4 -n "Pebble"
+        tmux new-window -t $SELECTED:5 -n "Shell"
+    fi
+
+    if [[ "$SELECTED" == "Blog" ]]; then
+        tmux rename-window -t $SELECTED:1 'Main'
+        tmux new-window -t $SELECTED:2 -n 'Test'
+    fi
+fi
+
+if [ "$TERM_PROGRAM" = tmux ]; then
+    tmux switch -t $SELECTED:1
+else
+    tmux attach-session -t $SELECTED:1
+fi
+

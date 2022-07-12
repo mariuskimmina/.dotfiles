@@ -17,6 +17,7 @@ export PATH=$PATH:/$GO_PATH/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export EDITOR="nvim"
+export DISABLE_AUTO_TITLE=true
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
