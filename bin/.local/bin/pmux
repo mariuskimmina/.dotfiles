@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # unset TMUX
-PROJECTS=$(echo "CoreDNS Blog" | tr " " "\n")
+PROJECTS=$(echo "CoreDNS Blog Dotfiles" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -26,6 +26,13 @@ then
     if [[ "$SELECTED" == "Blog" ]]; then
         tmux rename-window -t $SELECTED:1 'Main'
         tmux new-window -t $SELECTED:2 -n 'Test'
+    fi
+
+    if [[ "$SELECTED" == "Dotfiles" ]]; then
+        tmux rename-window -t $SELECTED:1 'Main'
+        tmux send-keys -t 'Main' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
+        tmux new-window -t $SELECTED:2 -n 'Shell'
+        tmux send-keys -t 'Shell' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
     fi
 fi
 
