@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# unset TMUX
-PROJECTS=$(echo "CoreDNS Blog Dotfiles" | tr " " "\n")
+PROJECTS=$(echo "CoreDNS Blog Dotfiles Mypvervisor" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -9,31 +8,39 @@ SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 if [ "$SESSIONEXISTS" = "" ]
 then
     tmux new-session -d -s $SELECTED
+else
+    tmux kill-session -t $SELECTED
+    tmux new-session -d -s $SELECTED
+fi
 
-    if [[ "$SELECTED" == "CoreDNS" ]]; then
-        tmux rename-window -t $SELECTED:1 'Main'
-        tmux send-keys -t 'Main' 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m 'vi' C-m
-        tmux new-window -t $SELECTED:2 -n 'Test'
-        tmux send-keys -t 'Test' 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m
-        tmux new-window -t $SELECTED:3 -n "CoreDNS"
-        tmux send-keys -t 'CoreDNS' 'cd /home/marius/open-source/CoreDNS/coredns/' C-m 'clear' C-m
-        tmux new-window -t $SELECTED:4 -n "Pebble"
-        tmux send-keys -t 'Pebble' 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/test/' C-m 'clear' C-m
-        tmux new-window -t $SELECTED:5 -n "Shell"
-        tmux send-keys -t 'Shell' 'cd /home/marius/' C-m 'clear' C-m
-    fi
+if [[ "$SELECTED" == "CoreDNS" ]]; then
+    tmux rename-window -t $SELECTED:1 'Main'
+    tmux send-keys -t $SELECTED:1 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Test'
+    tmux send-keys -t $SELECTED:2 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:3 -n 'CoreDNS'
+    tmux send-keys -t $SELECTED:3 'cd /home/marius/open-source/CoreDNS/coredns/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:4 -n 'Pebble'
+    tmux send-keys -t $SELECTED:4 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/test/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:5 -n 'Shell'
+    tmux send-keys -t $SELECTED:5 'cd /home/marius/' C-m 'clear' C-m
+fi
 
-    if [[ "$SELECTED" == "Blog" ]]; then
-        tmux rename-window -t $SELECTED:1 'Main'
-        tmux new-window -t $SELECTED:2 -n 'Test'
-    fi
+if [[ "$SELECTED" == "Blog" ]]; then
+    tmux rename-window -t $SELECTED:1 'Main'
+    tmux new-window -t $SELECTED:2 -n 'Test'
+fi
 
-    if [[ "$SELECTED" == "Dotfiles" ]]; then
-        tmux rename-window -t $SELECTED:1 'Main'
-        tmux send-keys -t 'Main' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
-        tmux new-window -t $SELECTED:2 -n 'Shell'
-        tmux send-keys -t 'Shell' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
-    fi
+if [[ "$SELECTED" == "Dotfiles" ]]; then
+    tmux rename-window -t $SELECTED:1 'Main'
+    tmux send-keys -t 'Main' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:2 -n 'Shell'
+    tmux send-keys -t 'Shell' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
+fi
+
+if [[ "$SELECTED" == "Mypervisor" ]]; then
+    tmux rename-window -t $SELECTED:1 'Main'
+    tmux new-window -t $SELECTED:2 -n 'Shell'
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
