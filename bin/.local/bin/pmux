@@ -15,38 +15,38 @@ fi
 
 if [[ "$SELECTED" == "CoreDNS" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m 'vi' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m 'vi' C-m
     tmux new-window -t $SELECTED:2 -n 'Test'
-    tmux send-keys -t $SELECTED:2 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m
     tmux new-window -t $SELECTED:3 -n 'Build'
-    tmux send-keys -t $SELECTED:3 'cd /home/marius/open-source/CoreDNS/coredns/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:3 'cd ~/open-source/CoreDNS/coredns/' C-m 'clear' C-m
     tmux new-window -t $SELECTED:4 -n 'Run'
-    tmux send-keys -t $SELECTED:4 'cd /home/marius/open-source/CoreDNS/test/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:4 'cd ~/open-source/CoreDNS/test/' C-m 'clear' C-m
     tmux new-window -t $SELECTED:5 -n 'Pebble'
-    tmux send-keys -t $SELECTED:4 'cd /home/marius/open-source/CoreDNS/coredns-tlsplus/test/' C-m 'clear' C-m
-    tmux new-window -t $SELECTED:5 -n 'Shell'
-    tmux send-keys -t $SELECTED:5 'cd /home/marius/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:5 'cd ~/open-source/CoreDNS/coredns-tlsplus/test/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:6 -n 'Shell'
+    tmux send-keys -t $SELECTED:6 'cd ~' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "Blog" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/mariuscodes/website/' C-m 'clear' C-m 'vi' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/home/marius/projects/mariuscodes/site/' C-m 'clear' C-m 'vi' C-m
     tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/mariuscodes/website/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/home/marius/projects/mariuscodes/site/' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "Dotfiles" ]]; then
     tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t 'Main' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/.dotfiles/' C-m 'clear' C-m
     tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t 'Shell' 'cd /home/marius/.dotfiles/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "OS" ]]; then
     tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/os' C-m 'clear'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/os' C-m 'clear'
     tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:1 'cd /home/marius/projects/os' C-m 'clear'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/os' C-m 'clear'
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
