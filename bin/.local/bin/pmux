@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS=$(echo "CoreDNS Blog Dotfiles Mypvervisor" | tr " " "\n")
+PROJECTS=$(echo "CoreDNS Blog Dotfiles Ansible Raft wow-hacks" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -30,9 +30,9 @@ fi
 
 if [[ "$SELECTED" == "Blog" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/home/marius/projects/mariuscodes/site/' C-m 'clear' C-m 'vi' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/mariuscodes/site/' C-m 'clear' C-m 'vi' C-m
     tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:2 'cd ~/home/marius/projects/mariuscodes/site/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/mariuscodes/site/' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "Dotfiles" ]]; then
@@ -42,11 +42,27 @@ if [[ "$SELECTED" == "Dotfiles" ]]; then
     tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m
 fi
 
-if [[ "$SELECTED" == "raft" ]]; then
+if [[ "$SELECTED" == "Ansible" ]]; then
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/linux-dev-playbook' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/streams/linux-dev-playbook' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/streams/linux-dev-playbook' C-m 'clear' C-m
+fi
+
+if [[ "$SELECTED" == "Raft" ]]; then
     tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t $SELECTED:1 'cd ~/learning/raft' C-m 'clear'
+    tmux send-keys -t $SELECTED:1 'cd ~/streams/raft' C-m 'clear'
     tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:2 'cd ~/learning/raft' C-m 'clear'
+    tmux send-keys -t $SELECTED:2 'cd ~/streams/raft' C-m 'clear'
+fi
+
+if [[ "$SELECTED" == "wow-hacks" ]]; then
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/wow-hacks/site/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Shell'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/wow-hacks/site/' C-m 'clear' C-m
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
