@@ -62,3 +62,9 @@ alias tlsplus="cd /home/marius/open-source/CoreDNS/coredns-tlsplus/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias luamake=/home/marius/tools/lua-language-server/3rd/luamake/luamake
+
+## Functions
+cover () { 
+    t="/tmp/go-cover.$$.tmp"
+    go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
+}
