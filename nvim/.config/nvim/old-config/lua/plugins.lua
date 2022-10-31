@@ -32,7 +32,6 @@ return require("packer").startup({
             "EdenEast/nightfox.nvim",
             as = "nightfox",
         })
-        use('shaunsingh/nord.nvim')
 
         use({
             "feline-nvim/feline.nvim",
@@ -94,7 +93,8 @@ return require("packer").startup({
         use({ "AckslD/nvim-neoclip.lua", config = get_setup("neoclip") })
         use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
         use {'lewis6991/gitsigns.nvim', config = get_setup("gitsigns")}
-        use {'williamboman/nvim-lsp-installer'}
+        use {'williamboman/mason.nvim'}
+        use {'williamboman/mason-lspconfig.nvim'}
         use({ "goolord/alpha-nvim", config = get_setup("alpha") })
 
         use({"akinsho/toggleterm.nvim", config = get_setup("toggleterm") })

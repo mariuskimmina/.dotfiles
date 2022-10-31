@@ -1,14 +1,9 @@
--- Inspired by https://github.com/Allaman/nvim/blob/main/init.lua
-
--- Plugin management via Packer
-require("plugins")
-require("setup.lsp")
-
--- All non plugin related (vim) options
-require("options")
-
--- Vim mappings, see lua/config/which.lua for more mappings
-require("mappings")
-
--- Vim autocommands/autogroups
-require("autocmd")
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.colorscheme"
+require "user.cmp"
+require "user.lsp"
+require "user.treesitter"
+require "user.telescope"
+require "user.nvim-tree"
