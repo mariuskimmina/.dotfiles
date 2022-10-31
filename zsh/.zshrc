@@ -52,8 +52,6 @@ alias v="nvim"
 alias lg="lazygit"
 alias dc="docker-compose"
 alias tmux="TERM=xterm-256color tmux"
-alias mk8s="ssh marius@192.168.122.31"
-alias monitorvm="ssh marius@192.168.122.92"
 alias tlsplus="cd /home/marius/open-source/CoreDNS/coredns-tlsplus/"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
