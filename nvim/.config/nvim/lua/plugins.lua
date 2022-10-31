@@ -40,6 +40,10 @@ return require("packer").startup({
         })
 
         use({
+            "hashivim/vim-terraform",
+        })
+
+        use({
             "nvim-treesitter/nvim-treesitter",
             config = get_setup("treesitter"),
             run = ":TSUpdate",

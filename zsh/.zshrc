@@ -68,3 +68,8 @@ cover () {
     t="/tmp/go-cover.$$.tmp"
     go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
 }
+
+
+alias sam="SAM_CLI_TELEMETRY=0 sam"
+alias aws="aws --profile default-mfa"
+export PATH=$PATH:$HOME/bin
