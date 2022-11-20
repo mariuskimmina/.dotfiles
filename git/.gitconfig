@@ -3,3 +3,5 @@
 # Please adapt and uncomment the following lines:
 	name = Marius Kimmina
 	email = marius@adjoe.io
+[core]
+	editor = /usr/bin/vim
