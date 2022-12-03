@@ -68,6 +68,11 @@ cover () {
 }
 
 
+alias aws="aws"
 alias sam="SAM_CLI_TELEMETRY=0 sam"
-alias aws="aws --profile default-mfa"
+alias maws="aws --profile default-mfa"
 export PATH=$PATH:$HOME/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
