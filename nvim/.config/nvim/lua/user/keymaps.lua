@@ -47,7 +47,9 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>ff",
+    "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>"
+    , opts)
 keymap("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", opts)
 
 
@@ -56,3 +58,8 @@ keymap("n", "<c-u>", "<c-u>zz", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
+keymap("n", "<leader>sv", ":source $MYVIMRC<CR>", opts)
+
+
+keymap("n", "<leader>hm", ':lua require("harpoon.mark").add_file()<CR>', opts)
+keymap("n", "<leader>hl", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
