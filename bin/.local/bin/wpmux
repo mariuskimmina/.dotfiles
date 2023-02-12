@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+PROJECTS=$(echo "Terraform Dashboard" | tr " " "\n")
+SELECTED=$(echo -e "$PROJECTS" | fzf)
+SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
+
+# Only create tmux session if it doesn't already exist
+if [ "$SESSIONEXISTS" = "" ]
+then
+    tmux new-session -d -s $SELECTED
+else
+    tmux kill-session -t $SELECTED
+    tmux new-session -d -s $SELECTED
+fi
+
+if [[ "$SELECTED" == "Terraform" ]]; then
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/terraform/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/terraform/' C-m 'clear' C-m 'lg' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/terraform/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:4 -n 'K9s'
+    tmux send-keys -t $SELECTED:4 'cd ~/projects/terraform/' C-m 'clear' C-m 'k9s' C-m
+fi
+
+if [[ "$SELECTED" == "Dashboard" ]]; then
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/dashboard/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/dashboard/' C-m 'clear' C-m 'lg' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/dashboard/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:4 -n 'K9s'
+    tmux send-keys -t $SELECTED:4 'cd ~/projects/dashboard/' C-m 'clear' C-m 'k9s' C-m
+fi
+
+if [[ "$SELECTED" == "Dotfiles" ]]; then
+    tmux rename-window -t $SELECTED:1 'Main'
+    tmux send-keys -t $SELECTED:1 'cd ~/.dotfiles/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:2 -n 'Shell'
+    tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m
+fi
+
+if [ "$TERM_PROGRAM" = tmux ]; then
+    tmux switch -t $SELECTED:1
+else
+    tmux attach-session -t $SELECTED:1
+fi
+
