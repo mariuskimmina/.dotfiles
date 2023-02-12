@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS=$(echo "CoreDNS Blog Dotfiles Ansible Raft wow-hacks" | tr " " "\n")
+PROJECTS=$(echo "Blog Dotfiles Inframastery SigNoz" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -11,21 +11,6 @@ then
 else
     tmux kill-session -t $SELECTED
     tmux new-session -d -s $SELECTED
-fi
-
-if [[ "$SELECTED" == "CoreDNS" ]]; then
-    tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m 'vi' C-m
-    tmux new-window -t $SELECTED:2 -n 'Test'
-    tmux send-keys -t $SELECTED:2 'cd ~/open-source/CoreDNS/coredns-tlsplus/' C-m 'clear' C-m
-    tmux new-window -t $SELECTED:3 -n 'Build'
-    tmux send-keys -t $SELECTED:3 'cd ~/open-source/CoreDNS/coredns/' C-m 'clear' C-m
-    tmux new-window -t $SELECTED:4 -n 'Run'
-    tmux send-keys -t $SELECTED:4 'cd ~/open-source/CoreDNS/test/' C-m 'clear' C-m
-    tmux new-window -t $SELECTED:5 -n 'Pebble'
-    tmux send-keys -t $SELECTED:5 'cd ~/open-source/CoreDNS/coredns-tlsplus/test/' C-m 'clear' C-m
-    tmux new-window -t $SELECTED:6 -n 'Shell'
-    tmux send-keys -t $SELECTED:6 'cd ~' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "Blog" ]]; then
@@ -42,27 +27,22 @@ if [[ "$SELECTED" == "Dotfiles" ]]; then
     tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m
 fi
 
-if [[ "$SELECTED" == "Ansible" ]]; then
+if [[ "$SELECTED" == "Inframastery" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/projects/linux-dev-playbook' C-m 'clear' C-m 'vi' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/inframastery/main/' C-m 'clear' C-m 'vi' C-m
     tmux new-window -t $SELECTED:2 -n 'Git'
-    tmux send-keys -t $SELECTED:2 'cd ~/streams/linux-dev-playbook' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/inframastery/main/' C-m 'clear' C-m 'lg' C-m
     tmux new-window -t $SELECTED:3 -n 'Shell'
-    tmux send-keys -t $SELECTED:3 'cd ~/streams/linux-dev-playbook' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/inframastery/main/' C-m 'clear' C-m
 fi
 
-if [[ "$SELECTED" == "Raft" ]]; then
+if [[ "$SELECTED" == "SigNoz" ]]; then
     tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t $SELECTED:1 'cd ~/streams/raft' C-m 'clear'
-    tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:2 'cd ~/streams/raft' C-m 'clear'
-fi
-
-if [[ "$SELECTED" == "wow-hacks" ]]; then
-    tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/projects/wow-hacks/site/' C-m 'clear' C-m 'vi' C-m
-    tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:2 'cd ~/projects/wow-hacks/site/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/signoz/' C-m 'clear'
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/signoz/' C-m 'clear' C-m 'lg' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/signoz' C-m 'clear'
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
