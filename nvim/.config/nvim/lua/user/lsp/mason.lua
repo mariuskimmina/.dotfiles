@@ -1,7 +1,7 @@
 local servers = {
     "gopls",
-    "sumneko_lua",
     "terraformls",
+    "lua_ls",
     "pyright",
     "jsonls",
 }
