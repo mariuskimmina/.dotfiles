@@ -3,5 +3,11 @@
 # Please adapt and uncomment the following lines:
 	name = Marius Kimmina
 	email = marius@adjoe.io
+[includeIf "gitdir:~/oss/"] # job needs, like workspace/* so all included projects
+    path = .gitconfig-oss
+[includeIf "gitdir:~/personal/"] # job needs, like workspace/* so all included projects
+    path = .gitconfig-oss
+[includeIf "gitdir:~/.dotfiles/"] # job needs, like workspace/* so all included projects
+    path = .gitconfig-oss
 [core]
 	editor = /usr/bin/vim

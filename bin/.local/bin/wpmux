@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS=$(echo "Terraform Dashboard" | tr " " "\n")
+PROJECTS=$(echo "Terraform Backend Dashboard" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -22,6 +22,17 @@ if [[ "$SELECTED" == "Terraform" ]]; then
     tmux send-keys -t $SELECTED:3 'cd ~/projects/terraform/' C-m 'clear' C-m
     tmux new-window -t $SELECTED:4 -n 'K9s'
     tmux send-keys -t $SELECTED:4 'cd ~/projects/terraform/' C-m 'clear' C-m 'k9s' C-m
+fi
+
+if [[ "$SELECTED" == "Backend" ]]; then
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/main/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/main/' C-m 'clear' C-m 'lg' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/main/' C-m 'clear' C-m
+    tmux new-window -t $SELECTED:4 -n 'K9s'
+    tmux send-keys -t $SELECTED:4 'cd ~/projects/main/' C-m 'clear' C-m 'k9s' C-m
 fi
 
 if [[ "$SELECTED" == "Dashboard" ]]; then

@@ -12,11 +12,12 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 export PATH=$PATH:/home/marius/go/bin
+export PATH=$PATH:/home/marius/Applications
 export GO_PATH=/home/marius/go
 export PATH=$PATH:/$GO_PATH/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-export EDITOR="nvim"
+export EDITOR="nvim -u NONE"
 export DISABLE_AUTO_TITLE=true
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -40,9 +41,9 @@ export STOW_FOLDERS=(tmux zsh)
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='nvim'
+    export EDITOR='nvim -u NONE'
 else
-    export EDITOR='nvim'
+    export EDITOR='nvim -u NONE'
 fi
 
 # Aliases

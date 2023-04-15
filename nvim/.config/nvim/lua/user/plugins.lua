@@ -48,6 +48,7 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use "akinsho/bufferline.nvim"
     use 'goolord/alpha-nvim'
+    use 'tpope/vim-fugitive'
 
     -- Colorscheme
     use { "catppuccin/nvim", as = "catppuccin" }
