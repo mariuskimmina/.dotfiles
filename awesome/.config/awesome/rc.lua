@@ -2,6 +2,7 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -17,6 +18,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+-- extra widgets
+local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -229,6 +233,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            batteryarc_widget(),
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -592,4 +597,4 @@ end)
 beautiful.useless_gap = 2
 
 -- Autostart
-awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/Pictures/Wallpaper")
+awful.util.spawn("nm-applet")
