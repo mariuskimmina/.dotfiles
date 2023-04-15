@@ -598,3 +598,4 @@ beautiful.useless_gap = 3
 
 -- Autostart
 awful.util.spawn("nm-applet")
+awful.util.spawn("feh --bg-scale /home/marius/Wallpaper/blushed_wallpaper_by_dumplingfurry_df1gbr6-fullview.jpg")
