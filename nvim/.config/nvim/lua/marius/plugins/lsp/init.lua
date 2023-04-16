@@ -1,24 +1,24 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
+  "VonHeikemen/lsp-zero.nvim",
+  branch = "v2.x",
   dependencies = {
     -- LSP Support
-    { 'neovim/nvim-lspconfig' }, -- Required
+    { "neovim/nvim-lspconfig" }, -- Required
     {
       -- Optional
-      'williamboman/mason.nvim',
+      "williamboman/mason.nvim",
       build = function()
-        pcall(vim.cmd, 'MasonUpdate')
+        pcall(vim.cmd, "MasonUpdate")
       end,
     },
-    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+    { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },     -- Required
-    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    { 'L3MON4D3/LuaSnip' },     -- Required
+    { "hrsh7th/nvim-cmp" }, -- Required
+    { "hrsh7th/cmp-nvim-lsp" }, -- Required
+    { "L3MON4D3/LuaSnip" }, -- Required
 
     -- formatting
-    { 'jose-elias-alvarez/null-ls.nvim' }
-  }
+    { "jose-elias-alvarez/null-ls.nvim" },
+  },
 }
