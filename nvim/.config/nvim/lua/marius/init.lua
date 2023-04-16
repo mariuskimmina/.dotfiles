@@ -6,3 +6,5 @@ require("marius.keymaps")
 require("marius.lazy")
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+test
