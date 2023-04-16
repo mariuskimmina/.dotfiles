@@ -1,31 +1,24 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate" -- :MasonUpdate updates registry contents
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-  },
-  {
-    "neovim/nvim-lspconfig",
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  dependencies = {
+    -- LSP Support
+    { 'neovim/nvim-lspconfig' }, -- Required
+    {
+      -- Optional
+      'williamboman/mason.nvim',
+      build = function()
+        pcall(vim.cmd, 'MasonUpdate')
+      end,
     },
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    version = "<CurrentMajor>.*",
-    build = "make install_jsregexp",
-  },
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+    -- Autocompletion
+    { 'hrsh7th/nvim-cmp' },     -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    { 'L3MON4D3/LuaSnip' },     -- Required
+
+    -- formatting
+    { 'jose-elias-alvarez/null-ls.nvim' }
+  }
 }
