@@ -1,4 +1,5 @@
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -7,7 +8,15 @@ vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
 vim.opt.expandtab = false
 vim.opt.signcolumn = 'yes'
+vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
+vim.opt.expandtab = true
+vim.opt.autowrite = true -- Enable auto write
+vim.opt.sidescrolloff = 8 -- Columns of context
+vim.opt.scrolloff = 4 -- Lines of context
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 vim.opt.termguicolors = true
