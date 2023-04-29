@@ -1,6 +1,5 @@
 local Plugins = {
-	{ "tpope/vim-fugitive" },
-	{ "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
+	--{ "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
 
 	-- Common dependencies
 	{ "MunifTanjim/nui.nvim", lazy = true },

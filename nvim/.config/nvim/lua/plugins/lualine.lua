@@ -2,8 +2,6 @@ local Plugin = {'nvim-lualine/lualine.nvim'}
 
 Plugin.name = 'lualine'
 
-Plugin.event = 'VeryLazy'
-
 -- See :help lualine.txt
 Plugin.opts = {
   options = {
@@ -12,7 +10,7 @@ Plugin.opts = {
     component_separators = '|',
     section_separators = '',
     disabled_filetypes = {
-      statusline = {'neo-tree'}
+      statusline = {'neo-tree', 'alpha'}
     }
   },
 }

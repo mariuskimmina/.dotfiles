@@ -18,5 +18,6 @@ vim.opt.sidescrolloff = 8 -- Columns of context
 vim.opt.scrolloff = 4 -- Lines of context
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.hidden = false
 
 vim.opt.termguicolors = true
