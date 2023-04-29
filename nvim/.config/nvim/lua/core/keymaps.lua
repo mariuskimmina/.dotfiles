@@ -28,6 +28,10 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts2)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts2)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts2)
 
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts2)
+keymap("n", "<S-h>", ":bprevious<CR>", opts2)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts2)
 keymap("v", ">", ">gv", opts2)
