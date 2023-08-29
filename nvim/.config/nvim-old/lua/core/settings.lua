@@ -13,11 +13,12 @@ vim.opt.expandtab = false
 vim.opt.signcolumn = 'yes'
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.opt.expandtab = true
-vim.opt.autowrite = true -- Enable auto write
-vim.opt.sidescrolloff = 8 -- Columns of context
-vim.opt.scrolloff = 4 -- Lines of context
+vim.opt.autowrite = true          -- Enable auto write
+vim.opt.sidescrolloff = 8         -- Columns of context
+vim.opt.scrolloff = 4             -- Lines of context
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.hidden = false
+vim.opt.swapfile = false
 
 vim.opt.termguicolors = true

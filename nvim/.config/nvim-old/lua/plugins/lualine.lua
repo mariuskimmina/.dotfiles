@@ -1,4 +1,4 @@
-local Plugin = {'nvim-lualine/lualine.nvim'}
+local Plugin = { 'nvim-lualine/lualine.nvim' }
 
 Plugin.name = 'lualine'
 
@@ -10,7 +10,7 @@ Plugin.opts = {
     component_separators = '|',
     section_separators = '',
     disabled_filetypes = {
-      statusline = {'neo-tree', 'alpha'}
+      statusline = { 'neo-tree', 'alpha' }
     }
   },
 }
