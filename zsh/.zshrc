@@ -69,7 +69,6 @@ cover () {
 }
 
 
-alias aws="aws"
 alias sam="SAM_CLI_TELEMETRY=0 sam"
 alias maws="aws --profile default-mfa"
 export PATH=$PATH:$HOME/bin
