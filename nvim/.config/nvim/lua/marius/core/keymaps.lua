@@ -1,4 +1,4 @@
-local Util = require("core.util")
+local Util = require("marius.core.util")
 
 -- set leader key to space
 vim.g.mapleader = " "
@@ -7,7 +7,11 @@ local keymap = vim.keymap -- for conciseness
 
 local opts2 = { noremap = true, silent = true }
 
--- local term_opts = { silent = true }
+local function map(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
 
 ---------------------
 -- General Keymaps -------------------
@@ -25,5 +29,9 @@ keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts2)
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts2)
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts2)
-keymap("v", ">", ">gv", opts2)
+keymap.set("v", "<", "<gv", opts2)
+keymap.set("v", ">", ">gv", opts2)
+
+map("n", "<leader>gg", function()
+  Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false })
+end, { desc = "Lazygit (root dir)" })
