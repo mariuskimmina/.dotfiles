@@ -28,6 +28,9 @@ keymap.set("n", "<C-Down>", ":resize +2<CR>", opts2)
 keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts2)
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts2)
 
+keymap.set("n", "L", ":BufferLineCycleNext<CR>", opts2)
+keymap.set("n", "H", ":BufferLineCyclePrev<CR>", opts2)
+
 -- Stay in indent mode
 keymap.set("v", "<", "<gv", opts2)
 keymap.set("v", ">", ">gv", opts2)
