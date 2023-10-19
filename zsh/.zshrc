@@ -70,7 +70,7 @@ cover () {
 
 
 alias sam="SAM_CLI_TELEMETRY=0 sam"
-alias maws="aws --profile default-mfa"
+alias aws="aws --profile mondoo-dev-admin"
 export PATH=$PATH:$HOME/bin
 
 export NVM_DIR="$HOME/.nvm"
@@ -86,3 +86,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+#
