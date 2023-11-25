@@ -24,7 +24,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
+
 
 # kubectl autocompletion
 source <(kubectl completion zsh)
