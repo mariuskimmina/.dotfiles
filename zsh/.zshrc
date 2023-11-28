@@ -24,7 +24,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-syntax-highlighting)
 
-eval "$(starship init zsh)"
 
 
 # kubectl autocompletion
@@ -88,4 +87,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 #
-#
+
+eval "$(starship init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

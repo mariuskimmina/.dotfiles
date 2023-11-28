@@ -4,3 +4,6 @@ format = "$directory$character"
 palette = "catppuccin_mocha"
 # move the rest of the prompt to the right
 right_format = "$all"
+
+[gcloud]
+format = '[$symbol$active(@$project)]($style) '
