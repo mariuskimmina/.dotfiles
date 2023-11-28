@@ -40,7 +40,7 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.test.buf.format({
+              vim.lsp.buf.format({
                 filter = function(client)
                   --  only use null-ls for formatting instead of lsp server
                   return client.name == "null-ls"
