@@ -67,7 +67,7 @@ cover () {
 
 
 alias sam="SAM_CLI_TELEMETRY=0 sam"
-alias aws="aws --profile mondoo-dev-admin"
+# alias aws="aws --profile mondoo-dev-admin"
 export PATH=$PATH:$HOME/bin
 
 export NVM_DIR="$HOME/.nvm"
