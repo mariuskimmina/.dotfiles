@@ -20,10 +20,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export EDITOR="nvim -u NONE"
 export DISABLE_AUTO_TITLE=true
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 plugins=(git zsh-syntax-highlighting)
-
 source $ZSH/oh-my-zsh.sh
 
 # kubectl autocompletion
@@ -88,7 +85,8 @@ esac
 # pnpm end
 #
 
-eval "$(starship init zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+
+eval "$(starship init zsh)"
