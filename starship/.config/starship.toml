@@ -5,8 +5,20 @@ palette = "catppuccin_macchiato"
 # move the rest of the prompt to the right
 right_format = "$all"
 
-[gcloud]
-format = '[$symbol$active(@$project)]($style) '
+[git_status]
+disabled = false
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+# Enable the aws module to show the current AWS profile
+[aws]
+disabled = true
+
+# Enable the kubernetes module to show the current Kubernetes context
+[kubernetes]
+symbol = "☸ " # Symbol to represent Kubernetes
+disabled = false # Ensure the module is enabled
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
