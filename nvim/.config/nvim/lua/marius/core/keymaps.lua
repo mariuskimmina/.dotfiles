@@ -38,3 +38,5 @@ keymap.set("v", ">", ">gv", opts2)
 map("n", "<leader>gg", function()
   Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false })
 end, { desc = "Lazygit (root dir)" })
+
+keymap.set("n", "<leader>np", ":NoNeckPain<CR>", opts2)

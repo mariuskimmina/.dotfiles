@@ -10,12 +10,16 @@ return {
     require("neo-tree").setup({
       window = {
         position = "right",
-        width = 50,
+        width = 45,
       },
       filesystem = {
+        filtered_items = {
+          visible = true,
+        },
         follow_current_file = {
           enabled = true,
         },
+        hijack_netrw_behavior = "open_current",
       },
     })
     -- set keymaps
