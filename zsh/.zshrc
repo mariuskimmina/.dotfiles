@@ -11,6 +11,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 export PATH=$PATH:/home/marius/go/bin
 export PATH=$PATH:/home/marius/Applications
 export GO_PATH=/home/marius/go
@@ -89,4 +91,26 @@ esac
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-eval "$(starship init zsh)"
+# Function to get the current path relative to the git root
+git_prompt_info() {
+    # Check if we are in a git repository
+    local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
+    if [[ -n $git_root ]]; then
+        # If in a git repo, extract the folder name and the path relative to the git root
+        local repo_name=$(basename "$git_root")
+        local relative_path=$(realpath --relative-to="$git_root" "$(pwd)")
+        # Handle the case when we are at the root of the git repository
+        if [[ "$relative_path" == "." ]]; then
+            relative_path=""
+        else
+            relative_path="/$relative_path"
+        fi
+        echo "[%F{cyan}$repo_name%F{none}$relative_path]%F{green}$(git branch --show-current 2> /dev/null)%f \$ "
+    else
+        # Default prompt if not in a git repository
+        echo "%F{yellow}%1~%f \$ "
+    fi
+}
+
+# Update the PROMPT variable
+PROMPT='$(git_prompt_info)'

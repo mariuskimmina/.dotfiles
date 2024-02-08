@@ -15,6 +15,11 @@ behind = '⇣${count}'
 [aws]
 disabled = true
 
+[status]
+disabled = false
+success_symbol = "🟢"
+symbol = "🔴"
+
 # Enable the kubernetes module to show the current Kubernetes context
 [kubernetes]
 symbol = "☸ " # Symbol to represent Kubernetes

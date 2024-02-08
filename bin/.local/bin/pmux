@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECTS=$(echo "Blog Dotfiles Inframastery SigNoz" | tr " " "\n")
+PROJECTS=$(echo "Aducated Dotfiles Notes" | tr " " "\n")
 SELECTED=$(echo -e "$PROJECTS" | fzf)
 SESSIONEXISTS=$(tmux list-sessions | grep $SELECTED)
 
@@ -13,36 +13,31 @@ else
     tmux new-session -d -s $SELECTED
 fi
 
-if [[ "$SELECTED" == "Blog" ]]; then
+if [[ "$SELECTED" == "Aducated" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/projects/mariuscodes/site/' C-m 'clear' C-m 'vi' C-m
-    tmux new-window -t $SELECTED:2 -n 'Shell'
-    tmux send-keys -t $SELECTED:2 'cd ~/projects/mariuscodes/site/' C-m 'clear' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/projects/aducated/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/projects/aducated/' C-m 'clear' C-m 'lg' C-m
+    tmux new-window -t $SELECTED:3 -n 'Shell'
+    tmux send-keys -t $SELECTED:3 'cd ~/projects/aducated/' C-m 'clear' C-m
 fi
 
 if [[ "$SELECTED" == "Dotfiles" ]]; then
-    tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t $SELECTED:1 'cd ~/.dotfiles/' C-m 'clear' C-m
+    tmux rename-window -t $SELECTED:1 'Edit'
+    tmux send-keys -t $SELECTED:1 'cd ~/.dotfiles/' C-m 'clear' C-m 'vi' C-m
+    tmux new-window -t $SELECTED:2 -n 'Git'
+    tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m 'lg' C-m
     tmux new-window -t $SELECTED:2 -n 'Shell'
     tmux send-keys -t $SELECTED:2 'cd ~/.dotfiles/' C-m 'clear' C-m
 fi
 
-if [[ "$SELECTED" == "Inframastery" ]]; then
+if [[ "$SELECTED" == "Notes" ]]; then
     tmux rename-window -t $SELECTED:1 'Edit'
-    tmux send-keys -t $SELECTED:1 'cd ~/projects/inframastery/main/' C-m 'clear' C-m 'vi' C-m
+    tmux send-keys -t $SELECTED:1 'cd ~/personal/notes/' C-m 'clear' C-m 'vi' C-m
     tmux new-window -t $SELECTED:2 -n 'Git'
-    tmux send-keys -t $SELECTED:2 'cd ~/projects/inframastery/main/' C-m 'clear' C-m 'lg' C-m
+    tmux send-keys -t $SELECTED:2 'cd ~/personal/notes/' C-m 'clear' C-m 'lg' C-m
     tmux new-window -t $SELECTED:3 -n 'Shell'
-    tmux send-keys -t $SELECTED:3 'cd ~/projects/inframastery/main/' C-m 'clear' C-m
-fi
-
-if [[ "$SELECTED" == "SigNoz" ]]; then
-    tmux rename-window -t $SELECTED:1 'Main'
-    tmux send-keys -t $SELECTED:1 'cd ~/projects/signoz/' C-m 'clear'
-    tmux new-window -t $SELECTED:2 -n 'Git'
-    tmux send-keys -t $SELECTED:2 'cd ~/projects/signoz/' C-m 'clear' C-m 'lg' C-m
-    tmux new-window -t $SELECTED:3 -n 'Shell'
-    tmux send-keys -t $SELECTED:3 'cd ~/projects/signoz' C-m 'clear'
+    tmux send-keys -t $SELECTED:3 'cd ~/personal/notes/' C-m 'clear' C-m
 fi
 
 if [ "$TERM_PROGRAM" = tmux ]; then
