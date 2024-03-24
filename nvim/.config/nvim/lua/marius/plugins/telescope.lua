@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  event = "VimEnter",
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -8,32 +9,45 @@ return {
     "nvim-tree/nvim-web-devicons",
     "ThePrimeagen/harpoon",
   },
+
   config = function()
-    -- import telescope plugin safely
     local telescope = require("telescope")
-
-    -- import telescope actions safely
     local actions = require("telescope.actions")
-
-    -- import telescope-ui-select safely
     local themes = require("telescope.themes")
 
-    -- configure telescope
     telescope.setup({
-      -- configure custom mappings
       defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--smart-case",
+          "--column",
+          "--hidden",
+          "--glob",
+          "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}",
+        },
         path_display = { "truncate" },
         mappings = {
           i = {
-            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-            ["<C-j>"] = actions.move_selection_next, -- move to next result
-            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           },
         },
       },
       pickers = {
         find_files = {
-          hidden = true,
+          find_command = {
+            "rg",
+            "--files",
+            "--smart-case",
+            "--hidden",
+            "--glob",
+            "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}",
+          },
         },
       },
       extensions = {
@@ -50,15 +64,18 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" }) -- find files within current working directory, respects .gitignore
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" }) -- find previously opened files
-    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" }) -- find string in current working directory as you type
-    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" }) -- find string under cursor in current working directory
-    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Show open buffers" }) -- list open buffers in current neovim instance
-    keymap.set("n", "<leader>hf", "<cmd>Telescope harpoon marks<cr>", { desc = "Show harpoon marks" }) -- show harpoon marks
-    keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Show git commits" }) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-    keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", { desc = "Show git commits for current buffer" }) -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-    keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Show git branches" }) -- list git branches (use <cr> to checkout) ["gb" for git branch]
-    keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Show current git changes per file" }) -- list current changes per file with diff preview ["gs" for git status]
+    local builtin = require("telescope.builtin")
+    keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+    keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+    keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+    keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    keymap.set("n", "<leader>b", builtin.buffers, { desc = "[S]earch [B]uffers" })
+
+    vim.keymap.set("n", "<leader>/", function()
+      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        winblend = 10,
+        previewer = false,
+      }))
+    end, { desc = "[/] Fuzzily search in current buffer" })
   end,
 }

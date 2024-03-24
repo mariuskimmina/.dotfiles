@@ -1,6 +1,7 @@
 return {
 	-- window_decorations = "RESIZE",
-	color_scheme = "Catppuccin Macchiato",
+	audible_bell = "Disabled",
+	color_scheme = "Catppuccin Latte",
 	font = require("wezterm").font("MesloLGL Nerd Font"),
 	hide_tab_bar_if_only_one_tab = true,
 	-- window_decorations = "RESIZE",
