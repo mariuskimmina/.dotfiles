@@ -97,6 +97,17 @@
       obs-studio
       obsidian
       hyprland
+      terraform
+      terraform-ls
+      nodejs
+      go
+      fzf
+      gcc
+      clang
+      stylua
+      telegram-desktop
+      wezterm
+      kitty
     ];
   };
 
@@ -109,7 +120,6 @@
     wget
     curl
     neovim
-    wezterm
     stow
   ];
 
