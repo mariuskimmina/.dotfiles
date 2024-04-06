@@ -87,6 +87,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      chromium
       kate
       git
       steam
@@ -103,6 +104,8 @@
       go
       fzf
       gcc
+      cmake
+      gnumake
       clang
       stylua
       telegram-desktop
