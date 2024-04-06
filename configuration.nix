@@ -141,7 +141,7 @@
    syntaxHighlighting.enable = true;
    
    shellAliases = {
-     update = "sudo nixos-rebuild switch --flake /hoome/marius/.dotfiles#default";
+     update = "sudo nixos-rebuild switch --flake /home/marius/.dotfiles-nix#default";
    };
 
    ohMyZsh = {
