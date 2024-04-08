@@ -123,7 +123,6 @@
     unzip
     wget
     curl
-    neovim
     stow
   ];
 
