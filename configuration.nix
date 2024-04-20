@@ -84,38 +84,20 @@
   users.users.marius = {
     isNormalUser = true;
     description = "marius";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-      firefox
-      chromium
-      kate
-      git
-      steam
-      spotify
-      bitwarden
-      discord
-      vscode
-      obs-studio
-      obsidian
-      hyprland
-      terraform
-      terraform-ls
-      nodejs
-      go
-      fzf
       gcc
       cmake
       gnumake
       clang
-      stylua
-      telegram-desktop
-      wezterm
-      kitty
+      firefox
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
