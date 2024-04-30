@@ -39,6 +39,10 @@
     sass
     tmux
     hugo
+    vlc
+    grpc-tools
+    protoc-gen-go
+    protoc-gen-go-grpc
   ];
 
   home.file = {
