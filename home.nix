@@ -44,6 +44,7 @@
     protoc-gen-go
     protoc-gen-go-grpc
     sqlc
+    kubectl
   ];
 
   home.file = {
