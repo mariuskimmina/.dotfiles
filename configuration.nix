@@ -91,6 +91,7 @@
       gnumake
       clang
       firefox
+      ripgrep
     ];
   };
 
