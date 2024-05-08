@@ -38,6 +38,10 @@ keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts2)
 keymap.set("n", "L", ":BufferLineCycleNext<CR>", opts2)
 keymap.set("n", "H", ":BufferLineCyclePrev<CR>", opts2)
 
+-- move quickfixlist
+keymap.set("n", "<leader>l", "<cmd>cnext<CR>zz", { desc = "Move forward quickfixlist"})
+keymap.set("n", "<leader>h", "<cmd>cprev<CR>zz", { desc = "Move backward quickfixlist"})
+
 -- Stay in indent mode
 keymap.set("v", "<", "<gv", opts2)
 keymap.set("v", ">", ">gv", opts2)

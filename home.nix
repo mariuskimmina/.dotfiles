@@ -46,7 +46,7 @@
     sqlc
     kubectl
     k9s
-    vimPlugins.telescope-fzf-native-nvim
+    obs-studio
   ];
 
   home.file = {
