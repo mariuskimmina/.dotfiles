@@ -47,6 +47,7 @@
     kubectl
     k9s
     obs-studio
+    buf
   ];
 
   home.file = {
