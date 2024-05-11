@@ -48,6 +48,7 @@
     k9s
     obs-studio
     buf
+    dbeaver
   ];
 
   home.file = {

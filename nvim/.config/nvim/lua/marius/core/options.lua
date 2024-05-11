@@ -39,9 +39,6 @@ opt.swapfile = false
 -- scrolloff
 opt.scrolloff = 10
 
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
 vim.opt.splitright = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -56,3 +53,5 @@ vim.opt.showmode = false
 
 -- Save undo history
 vim.opt.undofile = true
+
+vim.filetype.add({ extension = { templ = "templ" } })
