@@ -49,6 +49,7 @@
     obs-studio
     buf
     dbeaver
+    goose
   ];
 
   home.file = {
