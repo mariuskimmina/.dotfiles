@@ -116,6 +116,8 @@
   programs.hyprland = {
    enable = true;
   };
+  environment.variables.EDITOR = "nvim";
+
 
   programs.zsh = {
    enable = true;
