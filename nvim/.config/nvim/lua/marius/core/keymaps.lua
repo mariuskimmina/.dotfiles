@@ -16,8 +16,12 @@ end
 ---------------------
 -- General Keymaps -------------------
 
--- use jk to exit insert mode
--- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+-- Buffers
+vim.api.nvim_set_keymap("n", "tk", ":blast<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "tj", ":bfirst<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", { noremap = false })
+vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", { noremap = false })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -39,8 +43,8 @@ keymap.set("n", "L", ":BufferLineCycleNext<CR>", opts2)
 keymap.set("n", "H", ":BufferLineCyclePrev<CR>", opts2)
 
 -- move quickfixlist
-keymap.set("n", "<leader>l", "<cmd>cnext<CR>zz", { desc = "Move forward quickfixlist"})
-keymap.set("n", "<leader>h", "<cmd>cprev<CR>zz", { desc = "Move backward quickfixlist"})
+keymap.set("n", "<leader>l", "<cmd>cnext<CR>zz", { desc = "Move forward quickfixlist" })
+keymap.set("n", "<leader>h", "<cmd>cprev<CR>zz", { desc = "Move backward quickfixlist" })
 
 -- Stay in indent mode
 keymap.set("v", "<", "<gv", opts2)
