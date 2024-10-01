@@ -81,6 +81,13 @@ alias tdsb4="terraform workspace select sb4 && terraform destroy --var-file var-
 alias tdsb5="terraform workspace select sb5 && terraform destroy --var-file var-files/terraform.sb5.tfvars"
 alias tdsb6="terraform workspace select sb6 && terraform destroy --var-file var-files/terraform.sb6.tfvars"
 
+alias tisb1="terraform workspace select sb1 && terraform import --var-file var-files/terraform.sb1.tfvars"
+alias tisb2="terraform workspace select sb2 && terraform import --var-file var-files/terraform.sb2.tfvars"
+alias tisb3="terraform workspace select sb3 && terraform import --var-file var-files/terraform.sb3.tfvars"
+alias tisb4="terraform workspace select sb4 && terraform import --var-file var-files/terraform.sb4.tfvars"
+alias tisb5="terraform workspace select sb5 && terraform import --var-file var-files/terraform.sb5.tfvars"
+alias tisb6="terraform workspace select sb6 && terraform import --var-file var-files/terraform.sb6.tfvars"
+
 
 unalias encrypt_sb1 encrypt_sb2 encrypt_sb3 encrypt_sb4 encrypt_sb5 encrypt_sb6 encrypt_prod encrypt_prog_sb encrypt_prog_sb2 2>/dev/null
 
@@ -154,6 +161,14 @@ encrypt_prog_sb2() {
         return 1
     fi
     aws kms --profile programmatic-sb2-mfa encrypt --key-id b1b82b38-76ad-4e54-973c-b78803995810 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_prog_prod() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile programmatic-mfa encrypt --key-id 8887ce09-732a-4646-bc0c-48d5760772d5 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
