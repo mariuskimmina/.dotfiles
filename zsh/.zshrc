@@ -54,6 +54,123 @@ alias dc="docker-compose"
 alias tmux="TERM=xterm-256color tmux"
 alias tlsplus="cd /home/marius/open-source/CoreDNS/coredns-tlsplus/"
 
+#alias tasb1="terraform apply --var-file var-files/terraform.sb1.tfvars"
+#alias tasb2="terraform apply --var-file var-files/terraform.sb2.tfvars"
+#alias tasb3="terraform apply --var-file var-files/terraform.sb3.tfvars"
+#alias tasb4="terraform apply --var-file var-files/terraform.sb4.tfvars"
+#alias tasb5="terraform apply --var-file var-files/terraform.sb5.tfvars"
+#alias tasb6="terraform apply --var-file var-files/terraform.sb6.tfvars"
+alias tasb1="terraform workspace select sb1 && terraform apply --var-file var-files/terraform.sb1.tfvars"
+alias tasb2="terraform workspace select sb2 && terraform apply --var-file var-files/terraform.sb2.tfvars"
+alias tasb3="terraform workspace select sb3 && terraform apply --var-file var-files/terraform.sb3.tfvars"
+alias tasb4="terraform workspace select sb4 && terraform apply --var-file var-files/terraform.sb4.tfvars"
+alias tasb5="terraform workspace select sb5 && terraform apply --var-file var-files/terraform.sb5.tfvars"
+alias tasb6="terraform workspace select sb6 && terraform apply --var-file var-files/terraform.sb6.tfvars"
+
+alias tpsb1="terraform workspace select sb1 && terraform plan --var-file var-files/terraform.sb1.tfvars"
+alias tpsb2="terraform workspace select sb2 && terraform plan --var-file var-files/terraform.sb2.tfvars"
+alias tpsb3="terraform workspace select sb3 && terraform plan --var-file var-files/terraform.sb3.tfvars"
+alias tpsb4="terraform workspace select sb4 && terraform plan --var-file var-files/terraform.sb4.tfvars"
+alias tpsb5="terraform workspace select sb5 && terraform plan --var-file var-files/terraform.sb5.tfvars"
+alias tpsb6="terraform workspace select sb6 && terraform plan --var-file var-files/terraform.sb6.tfvars"
+
+alias tdsb1="terraform workspace select sb1 && terraform destroy --var-file var-files/terraform.sb1.tfvars"
+alias tdsb2="terraform workspace select sb2 && terraform destroy --var-file var-files/terraform.sb2.tfvars"
+alias tdsb3="terraform workspace select sb3 && terraform destroy --var-file var-files/terraform.sb3.tfvars"
+alias tdsb4="terraform workspace select sb4 && terraform destroy --var-file var-files/terraform.sb4.tfvars"
+alias tdsb5="terraform workspace select sb5 && terraform destroy --var-file var-files/terraform.sb5.tfvars"
+alias tdsb6="terraform workspace select sb6 && terraform destroy --var-file var-files/terraform.sb6.tfvars"
+
+alias tisb1="terraform workspace select sb1 && terraform import --var-file var-files/terraform.sb1.tfvars"
+alias tisb2="terraform workspace select sb2 && terraform import --var-file var-files/terraform.sb2.tfvars"
+alias tisb3="terraform workspace select sb3 && terraform import --var-file var-files/terraform.sb3.tfvars"
+alias tisb4="terraform workspace select sb4 && terraform import --var-file var-files/terraform.sb4.tfvars"
+alias tisb5="terraform workspace select sb5 && terraform import --var-file var-files/terraform.sb5.tfvars"
+alias tisb6="terraform workspace select sb6 && terraform import --var-file var-files/terraform.sb6.tfvars"
+
+
+unalias encrypt_sb1 encrypt_sb2 encrypt_sb3 encrypt_sb4 encrypt_sb5 encrypt_sb6 encrypt_prod encrypt_prog_sb encrypt_prog_sb2 2>/dev/null
+
+encrypt_sb1() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb1 encrypt --key-id 996e9c19-40ac-4328-9af8-2515b6517535 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_sb2() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb2 encrypt --key-id 547892a6-9063-4b39-ac12-411188a15461 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_sb3() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb3 encrypt --key-id 76562f41-5c7f-406c-90dd-52a22c70b425 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_sb4() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb4 encrypt --key-id 6e76ef33-0982-409e-8f4d-68e6e17c1857 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_sb5() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb5 encrypt --key-id bfe0a3a3-dbe3-40a5-b038-0c816bea7333 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_sb6() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile mainsb6 encrypt --key-id 1ef24334-b054-432f-946c-8d498f15a6ae --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_prod() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile default-mfa encrypt --key-id 71fdfc0b-65ca-4ac4-b3a2-80af86fd8bb4 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_prog_sb() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile programmatic-sb-mfa encrypt --key-id fbdd74c1-3147-47e4-907e-bc821b935af9 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_prog_sb2() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile programmatic-sb2-mfa encrypt --key-id b1b82b38-76ad-4e54-973c-b78803995810 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_prog_prod() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile programmatic-mfa encrypt --key-id 8887ce09-732a-4646-bc0c-48d5760772d5 --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

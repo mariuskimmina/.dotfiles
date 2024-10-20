@@ -9,7 +9,24 @@ return {
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
   },
+
   config = function()
+    local max_buffer_size = 10 * 1024
+    local buffer_source = {
+      name = "buffer",
+      option = {
+        get_bufnrs = function()
+          local buf = vim.api.nvim_get_current_buf()
+          local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+          if byte_size > max_buffer_size then
+            return {}
+          end
+          return { buf }
+        end,
+        indexing_interval = 1000,
+      },
+    }
+
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
@@ -48,9 +65,9 @@ return {
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" }, -- lsp
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
+        -- { name = "luasnip" }, -- snippets
         { name = "path" }, -- file system paths
+        buffer_source,
       }),
       -- configure lspkind for vs-code like icons
       formatting = {
@@ -58,6 +75,9 @@ return {
           maxwidth = 50,
           ellipsis_char = "...",
         }),
+      },
+      performance = {
+        max_view_entries = 9,
       },
     })
   end,
