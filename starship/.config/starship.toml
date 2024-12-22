@@ -21,6 +21,14 @@ untracked = "?${count}"
 [git_metrics]
 disabled = true
 
+[terraform]
+disabled = false
+format = '[ $version $workspace]($style) '
+
+[git_branch]
+disabled = false
+truncation_length = 20
+
 # Enable the aws module to show the current AWS profile
 [aws]
 disabled = true
