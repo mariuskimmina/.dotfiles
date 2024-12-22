@@ -13,11 +13,6 @@ return {
     -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     { "folke/neodev.nvim", opts = {} },
-    "hrsh7th/cmp-nvim-lsp",
-    {
-      "smjonas/inc-rename.nvim",
-      config = true,
-    },
   },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -98,7 +93,7 @@ return {
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+    -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     local servers = {
       gopls = {},
@@ -116,7 +111,7 @@ return {
               callSnippet = "Replace",
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = { disable = { "missing-fields" } },
           },
         },
       },
@@ -126,6 +121,8 @@ return {
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({
+      ensure_installed = ensure_installed,
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
