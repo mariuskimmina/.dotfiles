@@ -1,15 +1,25 @@
 add_newline = false
 # A minimal left prompt
-format = "$directory$character"
-palette = "catppuccin_macchiato"
+format = "$directory$git_branch$git_status$character"
+palette = "catppuccin_frappe"
 # move the rest of the prompt to the right
 right_format = "$all"
 
 [git_status]
 disabled = false
-ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+stashed = '\$${count}'
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = "=${count}"
+deleted = "✘${count}"
+renamed = "»${count}"
+modified = "!${count}"
+staged = "+${count}"
+untracked = "?${count}"
+
+[git_metrics]
+disabled = true
 
 # Enable the aws module to show the current AWS profile
 [aws]
@@ -22,61 +32,34 @@ symbol = "🔴"
 
 # Enable the kubernetes module to show the current Kubernetes context
 [kubernetes]
-symbol = "☸ " # Symbol to represent Kubernetes
-disabled = false # Ensure the module is enabled
+symbol = "☸ "
+disabled = false
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
 
-[palettes.catppuccin_macchiato]
-Rosewater="#f4dbd6"
-Flamingo="#f0c6c6"
-Pink="#f5bde6"
-Mauve="#c6a0f6"
-Red="#ed8796"
-Maroon="#ee99a0"
-Peach="#f5a97f"
-Yellow="#eed49f"
-Green="#a6da95"
-Teal="#8bd5ca"
-Sky="#91d7e3"
-Sapphire="#7dc4e4"
-Blue="#8aadf4"
-Lavender="#b7bdf8"
-Text="#cad3f5"
-Subtext1="#b8c0e0"
-Subtext0="#a5adcb"
-Overlay2="#939ab7"
-Overlay1="#8087a2"
-Overlay0="#6e738d"
-Surface2="#5b6078"
-Surface1="#494d64"
-Surface0="#363a4f"
-Base="#24273a"
-Mantle="#1e2030"
-Crust="#181926"

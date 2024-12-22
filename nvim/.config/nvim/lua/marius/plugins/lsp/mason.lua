@@ -39,6 +39,7 @@ return {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
         "eslint_d", -- ts/js linter
+        "tflint",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true,

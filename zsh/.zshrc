@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -11,7 +11,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export PATH=$PATH:/home/marius/go/bin
 export PATH=$PATH:/home/marius/Applications
@@ -22,7 +22,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export EDITOR="nvim -u NONE"
 export DISABLE_AUTO_TITLE=true
 
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting, zsh-kubectl-prompt)
 source $ZSH/oh-my-zsh.sh
 
 # kubectl autocompletion
@@ -173,9 +173,9 @@ encrypt_prog_prod() {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias luamake=/home/marius/tools/lua-language-server/3rd/luamake/luamake
 
@@ -206,39 +206,35 @@ esac
 #
 
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/bin/terraform terraform
 
 # Function to get the current path relative to the git root
-git_prompt_info() {
-    # Check if we are in a git repository
-    local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
-    if [[ -n $git_root ]]; then
-        # If in a git repo, extract the folder name and the path relative to the git root
-        local repo_name=$(basename "$git_root")
-        local relative_path=$(realpath --relative-to="$git_root" "$(pwd)")
-        # Handle the case when we are at the root of the git repository
-        if [[ "$relative_path" == "." ]]; then
-            relative_path=""
-        else
-            relative_path="/$relative_path"
-        fi
-        echo "[%F{cyan}$repo_name%F{none}$relative_path]%F{green}$(git branch --show-current 2> /dev/null)%f \$ "
-    else
-        # Default prompt if not in a git repository
-        echo "%F{yellow}%1~%f \$ "
-    fi
-}
-
-# Update the PROMPT variable
-PROMPT='$(git_prompt_info)'
+# git_prompt_info() {
+#     # Check if we are in a git repository
+#     local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
+#     if [[ -n $git_root ]]; then
+#         # If in a git repo, extract the folder name and the path relative to the git root
+#         local repo_name=$(basename "$git_root")
+#         local relative_path=$(realpath --relative-to="$git_root" "$(pwd)")
+#         # Handle the case when we are at the root of the git repository
+#         if [[ "$relative_path" == "." ]]; then
+#             relative_path=""
+#         else
+#             relative_path="/$relative_path"
+#         fi
+#         echo "[%F{cyan}$repo_name%F{none}$relative_path]%F{green}$(git branch --show-current 2> /dev/null)%f \$ "
+#     else
+#         # Default prompt if not in a git repository
+#         echo "%F{yellow}%1~%f \$ "
+#     fi
+# }
+# 
+# # Update the PROMPT variable
+# PROMPT='$(git_prompt_info)'
 
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C '/usr/local/bin/aws_completer' aws
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/marius/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/marius/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/marius/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marius/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(starship init zsh)"
