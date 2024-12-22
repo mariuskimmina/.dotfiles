@@ -23,6 +23,11 @@ vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", { noremap = false })
 
+-- Lazygit
+keymap.set("n", "<leader>lg", function()
+  Snacks.lazygit()
+end, { desc = " Open Lazygit" })
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("i", "jk", "<Esc>", { desc = "jk to go to normal mode" })
