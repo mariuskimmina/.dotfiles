@@ -23,6 +23,11 @@ vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", { noremap = false })
 
+-- Notifier
+keymap.set("n", "<leader>un", function()
+  Snacks.notifier.hide()
+end, { desc = "Dismiss all notification" })
+
 -- Lazygit
 keymap.set("n", "<leader>lg", function()
   Snacks.lazygit()
