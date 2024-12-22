@@ -33,6 +33,15 @@ keymap.set("n", "<leader>lg", function()
   Snacks.lazygit()
 end, { desc = " Open Lazygit" })
 
+-- Words
+keymap.set("n", "[[", function()
+  Snacks.words.jump(vim.v.count1)
+end, { desc = "Next Reference" })
+
+keymap.set("n", "]]", function()
+  Snacks.words.jump(-vim.v.count1)
+end, { desc = "Prev Reference" })
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("i", "jk", "<Esc>", { desc = "jk to go to normal mode" })
