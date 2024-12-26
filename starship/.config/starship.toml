@@ -5,6 +5,10 @@ palette = "catppuccin_frappe"
 # move the rest of the prompt to the right
 right_format = "$all"
 
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
 [git_status]
 disabled = false
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
