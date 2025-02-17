@@ -41,6 +41,7 @@ disabled = true
 disabled = false
 success_symbol = "🟢"
 symbol = "🔴"
+format = '[$symbol]($style) '
 
 # Enable the kubernetes module to show the current Kubernetes context
 [kubernetes]
