@@ -14,6 +14,9 @@ return {
     local actions = require("telescope.actions")
     local themes = require("telescope.themes")
 
+    telescope.load_extension("ui-select")
+    telescope.load_extension("harpoon")
+
     telescope.setup({
       defaults = {
         vimgrep_arguments = {
@@ -53,11 +56,9 @@ return {
         ["ui-select"] = {
           themes.get_dropdown({}),
         },
+        ["harpoon"] = {},
       },
     })
-
-    telescope.load_extension("ui-select")
-    telescope.load_extension("harpoon")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
@@ -68,6 +69,7 @@ return {
     keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
     keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
+    keymap.set("n", "<leader>sm", ":Telescope harpoon marks<CR>", { desc = "Search harpoon marks" })
 
     vim.keymap.set("n", "<leader>/", function()
       builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({

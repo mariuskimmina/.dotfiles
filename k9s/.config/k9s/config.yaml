@@ -6,6 +6,7 @@ k9s:
   readOnly: false
   noExitOnCtrlC: false
   ui:
+    skin: catppuccin_latte_skin
     enableMouse: false
     headless: false
     logoless: false

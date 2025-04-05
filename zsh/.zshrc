@@ -58,30 +58,53 @@ alias tasb3="terraform workspace select sb3 && terraform apply --var-file var-fi
 alias tasb4="terraform workspace select sb4 && terraform apply --var-file var-files/terraform.sb4.tfvars"
 alias tasb5="terraform workspace select sb5 && terraform apply --var-file var-files/terraform.sb5.tfvars"
 alias tasb6="terraform workspace select sb6 && terraform apply --var-file var-files/terraform.sb6.tfvars"
+alias tasb7="terraform workspace select sb7 && terraform apply --var-file var-files/terraform.sb7.tfvars"
 
+alias tpsb="terraform workspace select sb && terraform plan --var-file var-files/terraform.sb.tfvars"
 alias tpsb1="terraform workspace select sb1 && terraform plan --var-file var-files/terraform.sb1.tfvars"
 alias tpsb2="terraform workspace select sb2 && terraform plan --var-file var-files/terraform.sb2.tfvars"
 alias tpsb3="terraform workspace select sb3 && terraform plan --var-file var-files/terraform.sb3.tfvars"
 alias tpsb4="terraform workspace select sb4 && terraform plan --var-file var-files/terraform.sb4.tfvars"
 alias tpsb5="terraform workspace select sb5 && terraform plan --var-file var-files/terraform.sb5.tfvars"
 alias tpsb6="terraform workspace select sb6 && terraform plan --var-file var-files/terraform.sb6.tfvars"
+alias tpsb7="terraform workspace select sb7 && terraform plan --var-file var-files/terraform.sb7.tfvars"
 
+alias tdsb="terraform workspace select sb && terraform destroy --var-file var-files/terraform.sb.tfvars"
 alias tdsb1="terraform workspace select sb1 && terraform destroy --var-file var-files/terraform.sb1.tfvars"
 alias tdsb2="terraform workspace select sb2 && terraform destroy --var-file var-files/terraform.sb2.tfvars"
 alias tdsb3="terraform workspace select sb3 && terraform destroy --var-file var-files/terraform.sb3.tfvars"
 alias tdsb4="terraform workspace select sb4 && terraform destroy --var-file var-files/terraform.sb4.tfvars"
 alias tdsb5="terraform workspace select sb5 && terraform destroy --var-file var-files/terraform.sb5.tfvars"
 alias tdsb6="terraform workspace select sb6 && terraform destroy --var-file var-files/terraform.sb6.tfvars"
+alias tdsb7="terraform workspace select sb7 && terraform destroy --var-file var-files/terraform.sb7.tfvars"
 
+alias tisb="terraform workspace select sb && terraform import --var-file var-files/terraform.sb.tfvars"
 alias tisb1="terraform workspace select sb1 && terraform import --var-file var-files/terraform.sb1.tfvars"
 alias tisb2="terraform workspace select sb2 && terraform import --var-file var-files/terraform.sb2.tfvars"
 alias tisb3="terraform workspace select sb3 && terraform import --var-file var-files/terraform.sb3.tfvars"
 alias tisb4="terraform workspace select sb4 && terraform import --var-file var-files/terraform.sb4.tfvars"
 alias tisb5="terraform workspace select sb5 && terraform import --var-file var-files/terraform.sb5.tfvars"
 alias tisb6="terraform workspace select sb6 && terraform import --var-file var-files/terraform.sb6.tfvars"
+alias tisb7="terraform workspace select sb7 && terraform import --var-file var-files/terraform.sb7.tfvars"
 
 
-unalias encrypt_sb1 encrypt_sb2 encrypt_sb3 encrypt_sb4 encrypt_sb5 encrypt_sb6 encrypt_prod encrypt_prog_sb encrypt_prog_sb2 2>/dev/null
+unalias encrypt_sb1 encrypt_sb2 encrypt_sb3 encrypt_sb4 encrypt_sb5 encrypt_sb6 encrypt_prod encrypt_prog_sb encrypt_prog_sb2 encrypt_fraud_sb1 encrypt_fraud_sb2 2>/dev/null
+
+encrypt_fraud_sb1() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile fraudsb1 encrypt --key-id da786583-efe0-4290-a3be-855eb2ef716b --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
+
+encrypt_fraud_sb2() {
+    if [[ -z "$1" ]]; then
+        echo "Error: Input is empty"
+        return 1
+    fi
+    aws kms --profile fraudsb2 encrypt --key-id 5e71e63f-825a-481e-be82-5c3a3ec84c7d --plaintext fileb://<(echo -n "$1") | jq -r .CiphertextBlob
+}
 
 encrypt_sb1() {
     if [[ -z "$1" ]]; then

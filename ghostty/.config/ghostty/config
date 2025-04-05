@@ -1,1 +1,2 @@
 theme = catppuccin-latte
+scrollback-limit = 100000
