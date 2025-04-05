@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Name of the tmux session
+SESSION_NAME="terraform"
+WORK_DIR="$HOME/adjoe/terraform"
+
+tmux rename-window -t "$SESSION_NAME:1" "code"
+# Create the remaining windows
+tmux new-window -t "$SESSION_NAME:2" -c "$WORK_DIR" -n "env"
+tmux new-window -t "$SESSION_NAME:3" -c "$WORK_DIR" -n "misc"
+tmux new-window -t "$SESSION_NAME:4" -c "$WORK_DIR" -n "k9s"

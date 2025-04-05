@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Name of the tmux session
+SESSION_NAME="main-backend"
+WORK_DIR="$HOME/adjoe/main"
+
+tmux rename-window -t "$SESSION_NAME:0" "code"
+tmux new-window -t "$SESSION_NAME:2" -c "$WORK_DIR" -n "misc"

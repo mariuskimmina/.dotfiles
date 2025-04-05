@@ -1,0 +1,19 @@
+[[session]]
+name = "terraform"
+path = "~/adjoe/terraform"
+startup_command = "~/.config/sesh/scripts/terraform.dev"
+
+[[session]]
+name = "anti-fraud-helm-charts"
+path = "~/adjoe/anti-fraud-helm-charts"
+startup_command = "~/.config/sesh/scripts/anti-fraud-helm-charts.dev"
+
+[[session]]
+name = "main-backend"
+path = "~/adjoe/main"
+startup_command = "~/.config/sesh/scripts/main-backend.dev"
+
+[[session]]
+name = "dotfiles"
+path = "~/.dotfiles"
+startup_command = "~/.config/sesh/scripts/dotfiles.dev"
