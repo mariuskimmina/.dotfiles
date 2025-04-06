@@ -15,7 +15,6 @@ return {
     local themes = require("telescope.themes")
 
     telescope.load_extension("ui-select")
-    telescope.load_extension("harpoon")
 
     telescope.setup({
       defaults = {

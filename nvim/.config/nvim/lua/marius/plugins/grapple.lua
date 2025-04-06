@@ -15,5 +15,8 @@ return {
     vim.keymap.set("n", "m2", "<cmd>Grapple select index=2<cr>")
     vim.keymap.set("n", "m3", "<cmd>Grapple select index=3<cr>")
     vim.keymap.set("n", "m4", "<cmd>Grapple select index=4<cr>")
+
+    -- require("telescope").load_extension("grapple")
+    -- keymap.set("n", "<leader>sm", ":Telescope grapple tags<CR>")
   end,
 }
