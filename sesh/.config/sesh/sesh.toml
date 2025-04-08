@@ -9,6 +9,16 @@ path = "~/adjoe/anti-fraud-helm-charts"
 startup_command = "~/.config/sesh/scripts/anti-fraud-helm-charts.dev"
 
 [[session]]
+name = "dashboards"
+path = "~/adjoe/dashboard"
+startup_command = "~/.config/sesh/scripts/dashboard.dev"
+
+[[session]]
+name = "dags"
+path = "~/adjoe/dags"
+startup_command = "~/.config/sesh/scripts/dags.dev"
+
+[[session]]
 name = "main-backend"
 path = "~/adjoe/main"
 startup_command = "~/.config/sesh/scripts/main-backend.dev"
@@ -17,3 +27,18 @@ startup_command = "~/.config/sesh/scripts/main-backend.dev"
 name = "dotfiles"
 path = "~/.dotfiles"
 startup_command = "~/.config/sesh/scripts/dotfiles.dev"
+
+[[session]]
+name = "kosakata-backend"
+path = "~/kosakata/backend"
+startup_command = "~/.config/sesh/scripts/kosakata-backend.dev"
+
+[[session]]
+name = "kosakata-frontend"
+path = "~/kosakata/frontend"
+startup_command = "~/.config/sesh/scripts/kosakata-frontend.dev"
+
+[[session]]
+name = "kosakata-infra"
+path = "~/kosakata/infra"
+startup_command = "~/.config/sesh/scripts/kosakata-infra.dev"

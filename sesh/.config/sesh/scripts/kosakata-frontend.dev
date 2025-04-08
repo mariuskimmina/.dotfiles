@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Name of the tmux session
+SESSION_NAME="kosakata-frontend"
+WORK_DIR="$HOME/kosakata/frontend"
+
+tmux rename-window -t "$SESSION_NAME:1" "code"
+tmux new-window -t "$SESSION_NAME:3" -c "$WORK_DIR" -n "misc"
