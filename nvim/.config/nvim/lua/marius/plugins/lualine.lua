@@ -5,7 +5,6 @@ return {
   },
   config = function()
     local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
     local clients_lsp = function()
       local bufnr = vim.api.nvim_get_current_buf()
       ---@diagnostic disable-next-line: deprecated
