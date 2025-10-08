@@ -45,12 +45,9 @@ alias dc="docker-compose"
 alias tmux="TERM=xterm-256color tmux"
 alias tlsplus="cd /home/marius/open-source/CoreDNS/coredns-tlsplus/"
 
-#alias tasb1="terraform apply --var-file var-files/terraform.sb1.tfvars"
-#alias tasb2="terraform apply --var-file var-files/terraform.sb2.tfvars"
-#alias tasb3="terraform apply --var-file var-files/terraform.sb3.tfvars"
-#alias tasb4="terraform apply --var-file var-files/terraform.sb4.tfvars"
-#alias tasb5="terraform apply --var-file var-files/terraform.sb5.tfvars"
-#alias tasb6="terraform apply --var-file var-files/terraform.sb6.tfvars"
+alias ti="terraform init"
+
+alias ta="terraform apply"
 alias tasb="terraform workspace select sb && terraform apply --var-file var-files/terraform.sb.tfvars"
 alias tasb1="terraform workspace select sb1 && terraform apply --var-file var-files/terraform.sb1.tfvars"
 alias tasb2="terraform workspace select sb2 && terraform apply --var-file var-files/terraform.sb2.tfvars"
@@ -59,7 +56,9 @@ alias tasb4="terraform workspace select sb4 && terraform apply --var-file var-fi
 alias tasb5="terraform workspace select sb5 && terraform apply --var-file var-files/terraform.sb5.tfvars"
 alias tasb6="terraform workspace select sb6 && terraform apply --var-file var-files/terraform.sb6.tfvars"
 alias tasb7="terraform workspace select sb7 && terraform apply --var-file var-files/terraform.sb7.tfvars"
+alias tasb9="terraform workspace select sb9 && terraform apply --var-file var-files/terraform.sb9.tfvars"
 
+alias tp="terraform plan"
 alias tpsb="terraform workspace select sb && terraform plan --var-file var-files/terraform.sb.tfvars"
 alias tpsb1="terraform workspace select sb1 && terraform plan --var-file var-files/terraform.sb1.tfvars"
 alias tpsb2="terraform workspace select sb2 && terraform plan --var-file var-files/terraform.sb2.tfvars"
@@ -68,6 +67,7 @@ alias tpsb4="terraform workspace select sb4 && terraform plan --var-file var-fil
 alias tpsb5="terraform workspace select sb5 && terraform plan --var-file var-files/terraform.sb5.tfvars"
 alias tpsb6="terraform workspace select sb6 && terraform plan --var-file var-files/terraform.sb6.tfvars"
 alias tpsb7="terraform workspace select sb7 && terraform plan --var-file var-files/terraform.sb7.tfvars"
+alias tpsb9="terraform workspace select sb9 && terraform plan --var-file var-files/terraform.sb9.tfvars"
 
 alias tdsb="terraform workspace select sb && terraform destroy --var-file var-files/terraform.sb.tfvars"
 alias tdsb1="terraform workspace select sb1 && terraform destroy --var-file var-files/terraform.sb1.tfvars"
@@ -77,6 +77,7 @@ alias tdsb4="terraform workspace select sb4 && terraform destroy --var-file var-
 alias tdsb5="terraform workspace select sb5 && terraform destroy --var-file var-files/terraform.sb5.tfvars"
 alias tdsb6="terraform workspace select sb6 && terraform destroy --var-file var-files/terraform.sb6.tfvars"
 alias tdsb7="terraform workspace select sb7 && terraform destroy --var-file var-files/terraform.sb7.tfvars"
+alias tdsb9="terraform workspace select sb9 && terraform destroy --var-file var-files/terraform.sb9.tfvars"
 
 alias tisb="terraform workspace select sb && terraform import --var-file var-files/terraform.sb.tfvars"
 alias tisb1="terraform workspace select sb1 && terraform import --var-file var-files/terraform.sb1.tfvars"
@@ -86,6 +87,7 @@ alias tisb4="terraform workspace select sb4 && terraform import --var-file var-f
 alias tisb5="terraform workspace select sb5 && terraform import --var-file var-files/terraform.sb5.tfvars"
 alias tisb6="terraform workspace select sb6 && terraform import --var-file var-files/terraform.sb6.tfvars"
 alias tisb7="terraform workspace select sb7 && terraform import --var-file var-files/terraform.sb7.tfvars"
+alias tisb9="terraform workspace select sb9 && terraform import --var-file var-files/terraform.sb9.tfvars"
 
 
 unalias encrypt_sb1 encrypt_sb2 encrypt_sb3 encrypt_sb4 encrypt_sb5 encrypt_sb6 encrypt_prod encrypt_prog_sb encrypt_prog_sb2 encrypt_fraud_sb1 encrypt_fraud_sb2 2>/dev/null
