@@ -31,6 +31,13 @@ format = '[ $version $workspace]($style) '
 
 [git_branch]
 disabled = false
+truncation_length = 7
+
+# re-enable git_branch as long as we're not in a jj repo
+[custom.git_branch]
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_branch"
+description = "Only show git_branch if we're not in a jj repo"
 truncation_length = 20
 
 # Enable the aws module to show the current AWS profile
